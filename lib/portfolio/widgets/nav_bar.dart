@@ -50,8 +50,8 @@ class PortfolioNavBar extends StatelessWidget implements PreferredSizeWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Brand Monogram
-              _buildBrand(context),
+              // Left side empty as requested
+              const SizedBox.shrink(),
 
               // Desktop Navigation Links
               if (isDesktop) ...[
@@ -90,68 +90,6 @@ class PortfolioNavBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBrand(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () => onNavTap("hero"),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                gradient: PortfolioColors.primaryGradient,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: PortfolioColors.primary.withValues(alpha: 0.4),
-                    blurRadius: 14,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                PortfolioData.initials,
-                style: GoogleFonts.firaCode(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w900,
-                  color: const Color(0xFF070B13),
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  PortfolioData.name,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: PortfolioColors.textPrimary,
-                    letterSpacing: -0.2,
-                  ),
-                ),
-                Text(
-                  "Flutter & Mobile Architect",
-                  style: GoogleFonts.poppins(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                    color: PortfolioColors.primary,
-                  ),
-                ),
-              ],
-            ),
-          ],
         ),
       ),
     );
