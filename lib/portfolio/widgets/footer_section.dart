@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod_template/portfolio/constants/portfolio_colors.dart';
 import 'package:flutter_riverpod_template/portfolio/constants/portfolio_data.dart';
@@ -176,13 +177,13 @@ class FooterSection extends StatelessWidget {
       children: [
         IconButton(
           tooltip: "GitHub",
-          icon: const Icon(Icons.terminal_rounded, size: 18),
+          icon: const FaIcon(FontAwesomeIcons.github, size: 16),
           color: PortfolioColors.textSecondary,
           onPressed: () => UrlHelper.launchWebUrl(PortfolioData.githubUrl),
         ),
         IconButton(
           tooltip: "LinkedIn",
-          icon: const Icon(Icons.badge_outlined, size: 18),
+          icon: const FaIcon(FontAwesomeIcons.linkedin, size: 16),
           color: PortfolioColors.textSecondary,
           onPressed: () => UrlHelper.launchWebUrl(PortfolioData.linkedinUrl),
         ),

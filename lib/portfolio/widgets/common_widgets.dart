@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_riverpod_template/portfolio/constants/portfolio_colors.dart';
@@ -331,7 +332,7 @@ class TechChip extends StatelessWidget {
 }
 
 class SocialIconButton extends StatefulWidget {
-  final IconData icon;
+  final dynamic icon;
   final String tooltip;
   final VoidCallback onTap;
   final Color? accentColor;
@@ -350,6 +351,25 @@ class SocialIconButton extends StatefulWidget {
 
 class _SocialIconButtonState extends State<SocialIconButton> {
   bool _isHovered = false;
+
+  Widget _buildIcon(Color color) {
+    if (widget.icon is FaIconData) {
+      return FaIcon(
+        widget.icon as FaIconData,
+        size: 18,
+        color: color,
+      );
+    } else if (widget.icon is IconData) {
+      return Icon(
+        widget.icon as IconData,
+        size: 18,
+        color: color,
+      );
+    } else if (widget.icon is Widget) {
+      return widget.icon as Widget;
+    }
+    return const SizedBox.shrink();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -384,11 +404,7 @@ class _SocialIconButtonState extends State<SocialIconButton> {
                     ]
                   : [],
             ),
-            child: Icon(
-              widget.icon,
-              size: 18,
-              color: _isHovered ? accent : PortfolioColors.textSecondary,
-            ),
+            child: _buildIcon(_isHovered ? accent : PortfolioColors.textSecondary),
           ),
         ),
       ),

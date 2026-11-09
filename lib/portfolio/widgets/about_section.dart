@@ -27,7 +27,7 @@ class AboutSection extends StatelessWidget {
                 tag: "// 01. About Me",
                 title: "Engineering Scalable, Production-Grade Systems",
                 subtitle:
-                    "A deep dive into my architectural philosophy, performance standards, and real-world engineering track record.",
+                    "Leveraging Flutter's native compilation and clean architectural patterns to engineer resilient, high-performance cross-platform applications across iOS and Android.",
               ),
               if (isDesktop)
                 Row(

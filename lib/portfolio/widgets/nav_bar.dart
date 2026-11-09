@@ -57,6 +57,7 @@ class PortfolioNavBar extends StatelessWidget implements PreferredSizeWidget {
               if (isDesktop) ...[
                 Row(
                   children: [
+                    _NavLink(title: "Home", onTap: () => onNavTap("home")),
                     _NavLink(title: "About", onTap: () => onNavTap("about")),
                     _NavLink(title: "Skills", onTap: () => onNavTap("skills")),
                     _NavLink(title: "Experience", onTap: () => onNavTap("experience")),
@@ -203,6 +204,7 @@ class MobileDrawer extends StatelessWidget {
               const SizedBox(height: 24),
               const Divider(color: PortfolioColors.border),
               const SizedBox(height: 16),
+              _drawerItem(context, "Home", "home", Icons.home_outlined),
               _drawerItem(context, "About", "about", Icons.person_outline_rounded),
               _drawerItem(context, "Skills", "skills", Icons.code_rounded),
               _drawerItem(context, "Experience", "experience", Icons.work_outline_rounded),

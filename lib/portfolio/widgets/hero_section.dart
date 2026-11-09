@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod_template/portfolio/constants/portfolio_colors.dart';
 import 'package:flutter_riverpod_template/portfolio/constants/portfolio_data.dart';
@@ -189,14 +190,14 @@ class HeroSection extends StatelessWidget {
         Row(
           children: [
             SocialIconButton(
-              icon: Icons.terminal_rounded,
+              icon: FontAwesomeIcons.github,
               tooltip: "GitHub Profile",
               onTap: () => UrlHelper.launchWebUrl(PortfolioData.githubUrl),
               accentColor: PortfolioColors.pageTextPrimary,
             ),
             const SizedBox(width: 12),
             SocialIconButton(
-              icon: Icons.badge_outlined,
+              icon: FontAwesomeIcons.linkedin,
               tooltip: "LinkedIn Profile",
               onTap: () => UrlHelper.launchWebUrl(PortfolioData.linkedinUrl),
               accentColor: const Color(0xFF0A66C2),
