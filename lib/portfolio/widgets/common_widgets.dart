@@ -185,7 +185,7 @@ class _HoverCardState extends State<HoverCard> {
 
 class GlowButton extends StatefulWidget {
   final String text;
-  final IconData? icon;
+  final dynamic icon;
   final VoidCallback? onPressed;
   final bool isOutlined;
   final Color? accentColor;
@@ -264,13 +264,21 @@ class _GlowButtonState extends State<GlowButton> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (widget.icon != null) ...[
-                Icon(
-                  widget.icon,
-                  size: 16,
-                  color: widget.isOutlined
-                      ? (_isHovered ? accent : (widget.accentColor ?? PortfolioColors.pageTextPrimary))
-                      : Colors.white,
-                ),
+                widget.icon is IconData
+                    ? Icon(
+                        widget.icon as IconData,
+                        size: 16,
+                        color: widget.isOutlined
+                            ? (_isHovered ? accent : (widget.accentColor ?? PortfolioColors.pageTextPrimary))
+                            : Colors.white,
+                      )
+                    : FaIcon(
+                        widget.icon as FaIconData,
+                        size: 16,
+                        color: widget.isOutlined
+                            ? (_isHovered ? accent : (widget.accentColor ?? PortfolioColors.pageTextPrimary))
+                            : Colors.white,
+                      ),
                 const SizedBox(width: 8),
               ],
               Text(
