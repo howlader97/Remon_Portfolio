@@ -221,88 +221,114 @@ class HeroSection extends StatelessWidget {
   Widget _buildHeroCard(BuildContext context) {
     return HoverCard(
       borderRadius: 24,
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.all(28),
       borderColor: PortfolioColors.borderGlow,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
+          // Professional Profile Image
+          Container(
+            height: 250,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: PortfolioColors.primary.withValues(alpha: 0.35),
+                width: 1.5,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: PortfolioColors.primary.withValues(alpha: 0.15),
+                  blurRadius: 24,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16.5),
+              child: Stack(
+                fit: StackFit.expand,
                 children: [
-                  Container(
-                    width: 12,
-                    height: 12,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFEF4444),
-                      shape: BoxShape.circle,
+                  Image.asset(
+                    "assets/images/remon111.jpg",
+                    fit: BoxFit.cover,
+                    alignment: const Alignment(0.0, -0.2),
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: PortfolioColors.surfaceElevated,
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.person_rounded,
+                          size: 64,
+                          color: PortfolioColors.primary,
+                        ),
+                      );
+                    },
+                  ),
+                  // Subtle bottom gradient overlay
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: 70,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.transparent,
+                            PortfolioColors.background.withValues(alpha: 0.85),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  Container(
-                    width: 12,
-                    height: 12,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFF59E0B),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Container(
-                    width: 12,
-                    height: 12,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF10B981),
-                      shape: BoxShape.circle,
+                  // Floating name tag badge
+                  Positioned(
+                    bottom: 12,
+                    left: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: PortfolioColors.background.withValues(alpha: 0.9),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: PortfolioColors.primary.withValues(alpha: 0.4),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 7,
+                            height: 7,
+                            decoration: const BoxDecoration(
+                              color: PortfolioColors.accentGreen,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          const SizedBox(width: 7),
+                          Text(
+                            PortfolioData.name,
+                            style: GoogleFonts.poppins(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w600,
+                              color: PortfolioColors.textPrimary,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: PortfolioColors.surfaceElevated,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  "profile.dart",
-                  style: GoogleFonts.firaCode(
-                    fontSize: 12,
-                    color: PortfolioColors.textMuted,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-
-          // Code-style architecture banner
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: PortfolioColors.backgroundSecondary,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: PortfolioColors.border),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildCodeLine("class", " RemonPortfolio ", "extends", " SeniorEngineer {"),
-                const SizedBox(height: 4),
-                _buildCodeLine("  final architecture = ", "'Clean Architecture & MVVM';", "", ""),
-                const SizedBox(height: 4),
-                _buildCodeLine("  final state = ", "[Riverpod, Bloc, GetX];", "", ""),
-                const SizedBox(height: 4),
-                _buildCodeLine("  final focus = ", "'60 FPS Fluidity & Zero Leaks';", "", ""),
-                const SizedBox(height: 4),
-                _buildCodeLine("  final location = ", "'Dhaka, Bangladesh';", "", ""),
-                const SizedBox(height: 4),
-                _buildCodeLine("}", "", "", ""),
-              ],
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
 
           // Metrics 2x2 Grid
           GridView.count(
@@ -347,33 +373,6 @@ class HeroSection extends StatelessWidget {
                 ),
               );
             }).toList(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCodeLine(String kw, String name, String kw2, String rest) {
-    return RichText(
-      text: TextSpan(
-        style: GoogleFonts.firaCode(fontSize: 12, height: 1.5),
-        children: [
-          TextSpan(
-            text: kw,
-            style: const TextStyle(color: Color(0xFFF43F5E), fontWeight: FontWeight.bold),
-          ),
-          TextSpan(
-            text: name,
-            style: const TextStyle(color: Color(0xFF38BDF8)),
-          ),
-          if (kw2.isNotEmpty)
-            TextSpan(
-              text: kw2,
-              style: const TextStyle(color: Color(0xFFF43F5E), fontWeight: FontWeight.bold),
-            ),
-          TextSpan(
-            text: rest,
-            style: const TextStyle(color: Color(0xFFE2E8F0)),
           ),
         ],
       ),
