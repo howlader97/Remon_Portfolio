@@ -106,12 +106,72 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
-      body: Stack(
-        children: [
-          // Main Scrollable Content
-          SingleChildScrollView(
-            controller: _scrollController,
-            child: Column(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF0C2234), // Top subtle oceanic shade from user's image
+              Color(0xFF091624),
+              Color(0xFF080E18), // Deep rich midnight navy
+              Color(0xFF050A12),
+            ],
+            stops: [0.0, 0.25, 0.65, 1.0],
+          ),
+        ),
+        child: Stack(
+          children: [
+            // Simple premium top ambient spotlight / glow
+            Positioned(
+              top: -150,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: IgnorePointer(
+                  child: Container(
+                    width: 900,
+                    height: 500,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: RadialGradient(
+                        colors: [
+                          Color(0x3000D2FF), // Soft luminous light
+                          Color(0x100077B6),
+                          Colors.transparent,
+                        ],
+                        stops: const [0.0, 0.45, 1.0],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            // Soft mid-page ambient light behind projects
+            Positioned(
+              top: 1400,
+              right: -150,
+              child: IgnorePointer(
+                child: Container(
+                  width: 550,
+                  height: 550,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        Color(0x1500D2FF),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            // Main Scrollable Content
+            SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
               children: [
                 const SizedBox(height: 74), // Spacing for floating navbar
                 Container(
@@ -160,6 +220,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 }

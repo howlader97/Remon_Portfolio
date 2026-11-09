@@ -127,10 +127,10 @@ class HeroSection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
           decoration: BoxDecoration(
-            color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
+            color: PortfolioColors.primary.withValues(alpha: 0.10),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.3),
+              color: PortfolioColors.primary.withValues(alpha: 0.35),
             ),
           ),
           child: Text(
@@ -138,7 +138,7 @@ class HeroSection extends StatelessWidget {
             style: GoogleFonts.firaCode(
               fontSize: isDesktop ? 15 : 13,
               fontWeight: FontWeight.w700,
-              color: PortfolioColors.pageTextPrimary,
+              color: PortfolioColors.primary,
             ),
           ),
         ),
@@ -164,7 +164,7 @@ class HeroSection extends StatelessWidget {
             GlowButton(
               text: "Explore Projects",
               icon: Icons.layers_outlined,
-              accentColor: PortfolioColors.secondary,
+              accentColor: PortfolioColors.primary,
               onPressed: () => onNavTap("projects"),
             ),
             GlowButton(
