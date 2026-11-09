@@ -119,7 +119,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    PortfolioColors.primary.withValues(alpha: 0.12),
+                    PortfolioColors.primaryLight.withValues(alpha: 0.18),
                     Colors.transparent,
                   ],
                 ),
