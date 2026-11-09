@@ -95,9 +95,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 60 : 20,
-        vertical: isDesktop ? 24 : 16,
+      padding: EdgeInsets.only(
+        left: isDesktop ? 60 : 20,
+        right: isDesktop ? 60 : 20,
+        top: isDesktop ? 18 : 12,
+        bottom: isDesktop ? 8 : 4,
       ),
       child: Center(
         child: ConstrainedBox(
@@ -125,12 +127,19 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(isDesktop ? 20.5 : 12.5),
               child: Image.asset(
-                "assets/images/bannar_image.jpg",
+                "assets/images/bannar_images.jpg",
                 width: double.infinity,
                 fit: BoxFit.cover,
                 filterQuality: FilterQuality.high,
-                errorBuilder: (context, error, stackTrace) =>
-                    const SizedBox.shrink(),
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    "assets/images/bannar_image.jpg",
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                    errorBuilder: (c, e, s) => const SizedBox.shrink(),
+                  );
+                },
               ),
             ),
           ),
@@ -226,9 +235,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                 const SizedBox(height: 74), // Spacing for floating navbar
                 Container(
                   key: _heroKey,
-                  child: HeroSection(onNavTap: _scrollToSection),
+                  child: Column(
+                    children: [
+                      _buildBannerImage(context),
+                      HeroSection(onNavTap: _scrollToSection),
+                    ],
+                  ),
                 ),
-                _buildBannerImage(context),
                 Container(
                   key: _aboutKey,
                   child: const AboutSection(),
