@@ -24,10 +24,10 @@ class AboutSection extends StatelessWidget {
           child: Column(
             children: [
               const SectionHeader(
-                tag: "// 01. About Me",
-                title: "Engineering Scalable, Production-Grade Systems",
+                tag: "// Production Architecture",
+                title: "Engineering Scalable, High-Performance Systems",
                 subtitle:
-                    "Leveraging Flutter's native compilation and clean architectural patterns to engineer resilient, high-performance cross-platform applications across iOS and Android.",
+                    "Leveraging Flutter's native compilation and clean architectural patterns to engineer resilient, 60 FPS cross-platform applications across iOS and Android.",
               ),
               if (isDesktop)
                 Row(

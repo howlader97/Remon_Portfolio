@@ -54,45 +54,71 @@ class HeroSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Live Availability Pill
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          decoration: BoxDecoration(
-            color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(
-              color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.25),
-            ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 9,
-                height: 9,
-                decoration: const BoxDecoration(
-                  color: PortfolioColors.accentGreen,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: PortfolioColors.accentGreen,
-                      blurRadius: 8,
-                      spreadRadius: 2,
-                    ),
-                  ],
+        // Section Tag & Live Availability Pill
+        Wrap(
+          spacing: 12,
+          runSpacing: 10,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+              decoration: BoxDecoration(
+                color: PortfolioColors.primary.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: PortfolioColors.primary.withValues(alpha: 0.35),
                 ),
               ),
-              const SizedBox(width: 10),
-              Text(
-                "Available for New Projects & Opportunities",
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
+              child: Text(
+                "// 01. ABOUT ME",
+                style: GoogleFonts.firaCode(
+                  fontSize: 11.5,
                   fontWeight: FontWeight.w700,
-                  color: PortfolioColors.pageTextPrimary,
+                  color: PortfolioColors.primary,
+                  letterSpacing: 1.2,
                 ),
               ),
-            ],
-          ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+              decoration: BoxDecoration(
+                color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(
+                  color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.25),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 9,
+                    height: 9,
+                    decoration: const BoxDecoration(
+                      color: PortfolioColors.accentGreen,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: PortfolioColors.accentGreen,
+                          blurRadius: 8,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "Available for New Projects & Opportunities",
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: PortfolioColors.pageTextPrimary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 24),
 

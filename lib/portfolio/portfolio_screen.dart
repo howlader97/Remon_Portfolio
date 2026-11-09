@@ -25,7 +25,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final GlobalKey _homeKey = GlobalKey();
-  final GlobalKey _heroKey = GlobalKey();
   final GlobalKey _aboutKey = GlobalKey();
   final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _experienceKey = GlobalKey();
@@ -63,8 +62,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         targetKey = _homeKey;
         break;
       case "hero":
-        targetKey = _heroKey;
-        break;
       case "about":
         targetKey = _aboutKey;
         break;
@@ -441,12 +438,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   ),
                 ),
                 Container(
-                  key: _heroKey,
-                  child: HeroSection(onNavTap: _scrollToSection),
-                ),
-                Container(
                   key: _aboutKey,
-                  child: const AboutSection(),
+                  child: Column(
+                    children: [
+                      HeroSection(onNavTap: _scrollToSection),
+                      const AboutSection(),
+                    ],
+                  ),
                 ),
                 Container(
                   key: _skillsKey,
