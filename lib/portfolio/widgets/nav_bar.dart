@@ -83,7 +83,7 @@ class PortfolioNavBar extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: onOpenDrawer,
                   icon: const Icon(
                     Icons.menu_rounded,
-                    color: PortfolioColors.textPrimary,
+                    color: PortfolioColors.pageTextPrimary,
                     size: 28,
                   ),
                 ),
@@ -127,10 +127,10 @@ class _NavLinkState extends State<_NavLink> {
             duration: const Duration(milliseconds: 180),
             style: GoogleFonts.poppins(
               fontSize: 14,
-              fontWeight: _isHovered ? FontWeight.w600 : FontWeight.w500,
+              fontWeight: _isHovered ? FontWeight.w700 : FontWeight.w600,
               color: _isHovered
                   ? PortfolioColors.primary
-                  : PortfolioColors.textSecondary,
+                  : PortfolioColors.pageTextPrimary,
             ),
             child: Text(widget.title),
           ),

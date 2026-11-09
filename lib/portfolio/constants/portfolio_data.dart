@@ -17,11 +17,13 @@ class PortfolioData {
   static const String resumeUrl = "https://drive.google.com/file/d/view?usp=sharing";
 
   static const String professionalSummary =
-      "Senior-level Mobile Application Engineer with extensive hands-on experience designing, "
-      "scaling, and maintaining high-performance cross-platform applications across iOS and Android. "
-      "Expert in Clean Architecture, modular MVVM, Riverpod/Bloc/GetX, complex REST & GraphQL integrations, "
-      "and CI/CD pipelines. Proven track record of shipping top-tier apps on App Store and Google Play with "
-      "strict focus on UI performance, zero memory leaks, and 60 FPS fluidity.";
+      "Senior Flutter & Mobile Application Developer with extensive experience in designing, "
+      "developing, and maintaining scalable, high-performance cross-platform applications for Android "
+      "and iOS. Strong expertise in Flutter, Dart, Clean Architecture, MVVM, and state management solutions "
+      "including Riverpod, BLoC, and GetX. Proficient in RESTful API integration, Firebase, third-party SDKs, "
+      "payment gateway integration, and real-time application development. Skilled in performance optimization, "
+      "responsive UI development, CI/CD pipelines, and app deployment. Committed to writing clean, maintainable, "
+      "and scalable code while delivering smooth, reliable, and user-friendly mobile experiences.";
 
   // Quick Stats
   static const List<Map<String, String>> stats = [

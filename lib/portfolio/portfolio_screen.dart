@@ -97,7 +97,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       endDrawer: MobileDrawer(onNavTap: _scrollToSection),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: PortfolioColors.primary,
-        foregroundColor: const Color(0xFF070B13),
+        foregroundColor: Colors.white,
         elevation: 6,
         onPressed: () => UrlHelper.launchWebUrl(PortfolioData.whatsappUrl),
         icon: const Icon(Icons.chat_bubble_outline_rounded, size: 18),

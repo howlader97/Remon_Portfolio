@@ -52,7 +52,7 @@ class FooterSection extends StatelessWidget {
                           style: GoogleFonts.firaCode(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
-                            color: const Color(0xFF070B13),
+                            color: Colors.white,
                           ),
                         ),
                       ),

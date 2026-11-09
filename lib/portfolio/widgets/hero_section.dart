@@ -22,7 +22,7 @@ class HeroSection extends StatelessWidget {
       constraints: const BoxConstraints(minHeight: 680),
       padding: EdgeInsets.symmetric(
         horizontal: isDesktop ? 60 : 20,
-        vertical: isDesktop ? 70 : 40,
+        vertical: isDesktop ? 60 : 36,
       ),
       child: Center(
         child: ConstrainedBox(
@@ -33,15 +33,15 @@ class HeroSection extends StatelessWidget {
                   children: [
                     Expanded(flex: 6, child: _buildContent(context, true)),
                     const SizedBox(width: 48),
-                    Expanded(flex: 5, child: _buildHeroCard(context)),
+                    Expanded(flex: 5, child: _buildHeroCard(context, true)),
                   ],
                 )
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildContent(context, false),
-                    const SizedBox(height: 48),
-                    _buildHeroCard(context),
+                    const SizedBox(height: 40),
+                    _buildHeroCard(context, false),
                   ],
                 ),
         ),
@@ -57,10 +57,10 @@ class HeroSection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
-            color: PortfolioColors.accentGreen.withValues(alpha: 0.12),
+            color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(30),
             border: Border.all(
-              color: PortfolioColors.accentGreen.withValues(alpha: 0.35),
+              color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.25),
             ),
           ),
           child: Row(
@@ -86,8 +86,8 @@ class HeroSection extends StatelessWidget {
                 "Available for New Projects & Opportunities",
                 style: GoogleFonts.poppins(
                   fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: PortfolioColors.accentGreen,
+                  fontWeight: FontWeight.w700,
+                  color: PortfolioColors.pageTextPrimary,
                 ),
               ),
             ],
@@ -100,8 +100,8 @@ class HeroSection extends StatelessWidget {
           "Hello, I'm",
           style: GoogleFonts.poppins(
             fontSize: isDesktop ? 22 : 18,
-            fontWeight: FontWeight.w500,
-            color: PortfolioColors.textSecondary,
+            fontWeight: FontWeight.w600,
+            color: PortfolioColors.pageTextSecondary,
           ),
         ),
         const SizedBox(height: 6),
@@ -109,7 +109,7 @@ class HeroSection extends StatelessWidget {
         // Name with gradient shader
         ShaderMask(
           shaderCallback: (bounds) =>
-              PortfolioColors.primaryGradient.createShader(bounds),
+              PortfolioColors.heroHeadingGradient.createShader(bounds),
           child: Text(
             PortfolioData.name,
             style: GoogleFonts.poppins(
@@ -125,33 +125,33 @@ class HeroSection extends StatelessWidget {
 
         // Role title
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
           decoration: BoxDecoration(
-            color: PortfolioColors.primary.withValues(alpha: 0.1),
+            color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: PortfolioColors.primary.withValues(alpha: 0.3),
+              color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.3),
             ),
           ),
           child: Text(
             PortfolioData.roleTitle,
             style: GoogleFonts.firaCode(
               fontSize: isDesktop ? 15 : 13,
-              fontWeight: FontWeight.w600,
-              color: PortfolioColors.primary,
+              fontWeight: FontWeight.w700,
+              color: PortfolioColors.pageTextPrimary,
             ),
           ),
         ),
         const SizedBox(height: 20),
 
-        // Subtitle / Bio
+        // Professional Summary
         Text(
           PortfolioData.professionalSummary,
           style: GoogleFonts.poppins(
             fontSize: isDesktop ? 15 : 14,
-            fontWeight: FontWeight.w400,
-            color: PortfolioColors.textSecondary,
-            height: 1.7,
+            fontWeight: FontWeight.w500,
+            color: PortfolioColors.pageTextSecondary,
+            height: 1.75,
           ),
         ),
         const SizedBox(height: 32),
@@ -164,19 +164,21 @@ class HeroSection extends StatelessWidget {
             GlowButton(
               text: "Explore Projects",
               icon: Icons.layers_outlined,
+              accentColor: PortfolioColors.secondary,
               onPressed: () => onNavTap("projects"),
             ),
             GlowButton(
               text: "Contact Me",
               icon: Icons.mail_outline_rounded,
               isOutlined: true,
+              accentColor: PortfolioColors.pageTextPrimary,
               onPressed: () => onNavTap("contact"),
             ),
             GlowButton(
               text: "View GitHub",
               icon: Icons.terminal_rounded,
               isOutlined: true,
-              accentColor: PortfolioColors.textSecondary,
+              accentColor: PortfolioColors.pageTextPrimary,
               onPressed: () => UrlHelper.launchWebUrl(PortfolioData.githubUrl),
             ),
           ],
@@ -190,6 +192,7 @@ class HeroSection extends StatelessWidget {
               icon: Icons.terminal_rounded,
               tooltip: "GitHub Profile",
               onTap: () => UrlHelper.launchWebUrl(PortfolioData.githubUrl),
+              accentColor: PortfolioColors.pageTextPrimary,
             ),
             const SizedBox(width: 12),
             SocialIconButton(
@@ -218,28 +221,30 @@ class HeroSection extends StatelessWidget {
     );
   }
 
-  Widget _buildHeroCard(BuildContext context) {
+  Widget _buildHeroCard(BuildContext context, bool isDesktop) {
+    final imageHeight = isDesktop ? 370.0 : 310.0;
+
     return HoverCard(
       borderRadius: 24,
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(24),
       borderColor: PortfolioColors.borderGlow,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Professional Profile Image
           Container(
-            height: 250,
+            height: imageHeight,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color: PortfolioColors.primary.withValues(alpha: 0.35),
+                color: PortfolioColors.primaryLight.withValues(alpha: 0.4),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: PortfolioColors.primary.withValues(alpha: 0.15),
-                  blurRadius: 24,
+                  color: PortfolioColors.primaryLight.withValues(alpha: 0.15),
+                  blurRadius: 26,
                   offset: const Offset(0, 8),
                 ),
               ],
@@ -252,7 +257,7 @@ class HeroSection extends StatelessWidget {
                   Image.asset(
                     "assets/images/remon111.jpg",
                     fit: BoxFit.cover,
-                    alignment: const Alignment(0.0, -0.2),
+                    alignment: const Alignment(0.0, -0.6),
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
                         color: PortfolioColors.surfaceElevated,
@@ -260,23 +265,23 @@ class HeroSection extends StatelessWidget {
                         child: const Icon(
                           Icons.person_rounded,
                           size: 64,
-                          color: PortfolioColors.primary,
+                          color: PortfolioColors.primaryLight,
                         ),
                       );
                     },
                   ),
-                  // Subtle bottom gradient overlay
+                  // Subtle bottom gradient vignette
                   Positioned(
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    height: 70,
+                    height: 80,
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
                             Colors.transparent,
-                            PortfolioColors.background.withValues(alpha: 0.85),
+                            PortfolioColors.surface.withValues(alpha: 0.85),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -290,14 +295,14 @@ class HeroSection extends StatelessWidget {
                     left: 12,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 4,
+                        horizontal: 12,
+                        vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: PortfolioColors.background.withValues(alpha: 0.9),
+                        color: PortfolioColors.surface.withValues(alpha: 0.92),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: PortfolioColors.primary.withValues(alpha: 0.4),
+                          color: PortfolioColors.primaryLight.withValues(alpha: 0.4),
                         ),
                       ),
                       child: Row(
@@ -311,11 +316,11 @@ class HeroSection extends StatelessWidget {
                               shape: BoxShape.circle,
                             ),
                           ),
-                          const SizedBox(width: 7),
+                          const SizedBox(width: 8),
                           Text(
                             PortfolioData.name,
                             style: GoogleFonts.poppins(
-                              fontSize: 11.5,
+                              fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: PortfolioColors.textPrimary,
                             ),
@@ -328,51 +333,81 @@ class HeroSection extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 18),
 
-          // Metrics 2x2 Grid
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisSpacing: 14,
-            mainAxisSpacing: 14,
-            childAspectRatio: 1.8,
-            children: PortfolioData.stats.map((stat) {
-              return Container(
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: PortfolioColors.surfaceElevated,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: PortfolioColors.primary.withValues(alpha: 0.15),
+          // 3+ Years Experience Highlight Card
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+            decoration: BoxDecoration(
+              color: PortfolioColors.surfaceElevated,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: PortfolioColors.primaryLight.withValues(alpha: 0.35),
+                width: 1.2,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: PortfolioColors.primaryLight.withValues(alpha: 0.12),
+                  blurRadius: 16,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    gradient: PortfolioColors.primaryGradient,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Icon(
+                    Icons.workspace_premium_rounded,
+                    color: Colors.white,
+                    size: 26,
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      stat["value"]!,
-                      style: GoogleFonts.poppins(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w800,
-                        color: PortfolioColors.primary,
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "3+",
+                            style: GoogleFonts.poppins(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w800,
+                              color: PortfolioColors.primaryLight,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            "Years Experience",
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: PortfolioColors.textPrimary,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      stat["label"]!,
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: PortfolioColors.textSecondary,
+                      const SizedBox(height: 2),
+                      Text(
+                        "Senior Flutter & Mobile Application Architecture",
+                        style: GoogleFonts.poppins(
+                          fontSize: 11.5,
+                          fontWeight: FontWeight.w500,
+                          color: PortfolioColors.textSecondary,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              );
-            }).toList(),
+              ],
+            ),
           ),
         ],
       ),

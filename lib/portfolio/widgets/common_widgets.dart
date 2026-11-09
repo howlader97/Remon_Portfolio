@@ -58,18 +58,18 @@ class SectionHeader extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
           decoration: BoxDecoration(
-            color: PortfolioColors.primary.withValues(alpha: 0.1),
+            color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: PortfolioColors.primary.withValues(alpha: 0.3),
+              color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.3),
             ),
           ),
           child: Text(
             tag.toUpperCase(),
             style: GoogleFonts.firaCode(
               fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: PortfolioColors.primary,
+              fontWeight: FontWeight.w700,
+              color: PortfolioColors.pageTextPrimary,
               letterSpacing: 1.5,
             ),
           ),
@@ -82,7 +82,7 @@ class SectionHeader extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: PortfolioColors.textPrimary,
+            color: PortfolioColors.pageTextPrimary,
             letterSpacing: -0.5,
           ),
         ),
@@ -95,7 +95,8 @@ class SectionHeader extends StatelessWidget {
               textAlign: isCenter ? TextAlign.center : TextAlign.start,
               style: GoogleFonts.poppins(
                 fontSize: 15,
-                color: PortfolioColors.textSecondary,
+                fontWeight: FontWeight.w500,
+                color: PortfolioColors.pageTextSecondary,
                 height: 1.6,
               ),
             ),
@@ -266,8 +267,8 @@ class _GlowButtonState extends State<GlowButton> {
                   widget.icon,
                   size: 16,
                   color: widget.isOutlined
-                      ? (_isHovered ? accent : PortfolioColors.textPrimary)
-                      : const Color(0xFF0A0E17),
+                      ? (_isHovered ? accent : (widget.accentColor ?? PortfolioColors.pageTextPrimary))
+                      : Colors.white,
                 ),
                 const SizedBox(width: 8),
               ],
@@ -277,8 +278,8 @@ class _GlowButtonState extends State<GlowButton> {
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: widget.isOutlined
-                      ? (_isHovered ? accent : PortfolioColors.textPrimary)
-                      : const Color(0xFF0A0E17),
+                      ? (_isHovered ? accent : (widget.accentColor ?? PortfolioColors.pageTextPrimary))
+                      : Colors.white,
                 ),
               ),
             ],

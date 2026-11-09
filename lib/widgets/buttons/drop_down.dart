@@ -126,7 +126,7 @@ class _AppDropdownFieldState<T>
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       itemCount: widget.options.length,
-                      separatorBuilder: (_, __) => Divider(height: 0,color: Colors.grey,),
+                      separatorBuilder: (context, index) => Divider(height: 0,color: Colors.grey,),
                       itemBuilder: (context, index) {
                         final item = widget.options[index];
                         final isSelected = item == widget.value;
