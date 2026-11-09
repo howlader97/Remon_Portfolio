@@ -116,6 +116,8 @@ class AboutSection extends StatelessWidget {
           const SizedBox(height: 12),
           _infoRow(Icons.email_outlined, "Email", PortfolioData.email),
           const SizedBox(height: 12),
+          _infoRow(Icons.alternate_email_rounded, "Alt Email", PortfolioData.secondaryEmail),
+          const SizedBox(height: 12),
           _infoRow(Icons.phone_outlined, "Phone", PortfolioData.phone),
           const SizedBox(height: 12),
           _infoRow(Icons.school_outlined, "Education", "B.Sc. in CSE (City University)"),

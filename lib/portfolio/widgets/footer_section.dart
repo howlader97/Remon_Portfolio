@@ -187,6 +187,12 @@ class FooterSection extends StatelessWidget {
           onPressed: () => UrlHelper.launchWebUrl(PortfolioData.linkedinUrl),
         ),
         IconButton(
+          tooltip: "Facebook",
+          icon: const Icon(Icons.facebook, size: 18),
+          color: PortfolioColors.textSecondary,
+          onPressed: () => UrlHelper.launchWebUrl(PortfolioData.facebookUrl),
+        ),
+        IconButton(
           tooltip: "Email",
           icon: const Icon(Icons.mail_outline_rounded, size: 18),
           color: PortfolioColors.textSecondary,

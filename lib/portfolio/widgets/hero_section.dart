@@ -203,6 +203,13 @@ class HeroSection extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             SocialIconButton(
+              icon: Icons.facebook,
+              tooltip: "Facebook Profile",
+              onTap: () => UrlHelper.launchWebUrl(PortfolioData.facebookUrl),
+              accentColor: const Color(0xFF1877F2),
+            ),
+            const SizedBox(width: 12),
+            SocialIconButton(
               icon: Icons.mail_outline_rounded,
               tooltip: "Email Me",
               onTap: () => UrlHelper.launchMail(PortfolioData.email),

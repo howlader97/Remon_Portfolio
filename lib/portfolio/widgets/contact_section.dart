@@ -153,11 +153,20 @@ class _ContactSectionState extends State<ContactSection> {
           const SizedBox(height: 28),
           _contactItem(
             icon: Icons.mail_outline_rounded,
-            label: "Email",
+            label: "Primary Email",
             value: PortfolioData.email,
             color: PortfolioColors.primary,
             onTap: () => UrlHelper.launchMail(PortfolioData.email),
-            onCopy: () => _copyToClipboard(PortfolioData.email, "Email"),
+            onCopy: () => _copyToClipboard(PortfolioData.email, "Primary Email"),
+          ),
+          const SizedBox(height: 18),
+          _contactItem(
+            icon: Icons.alternate_email_rounded,
+            label: "Alternate Email",
+            value: PortfolioData.secondaryEmail,
+            color: PortfolioColors.primaryLight,
+            onTap: () => UrlHelper.launchMail(PortfolioData.secondaryEmail),
+            onCopy: () => _copyToClipboard(PortfolioData.secondaryEmail, "Alternate Email"),
           ),
           const SizedBox(height: 18),
           _contactItem(
@@ -200,6 +209,13 @@ class _ContactSectionState extends State<ContactSection> {
                 tooltip: "LinkedIn",
                 onTap: () => UrlHelper.launchWebUrl(PortfolioData.linkedinUrl),
                 accentColor: const Color(0xFF0A66C2),
+              ),
+              const SizedBox(width: 12),
+              SocialIconButton(
+                icon: Icons.facebook,
+                tooltip: "Facebook",
+                onTap: () => UrlHelper.launchWebUrl(PortfolioData.facebookUrl),
+                accentColor: const Color(0xFF1877F2),
               ),
               const SizedBox(width: 12),
               SocialIconButton(

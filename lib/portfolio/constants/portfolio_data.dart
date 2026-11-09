@@ -9,10 +9,12 @@ class PortfolioData {
   static const String initials = "RH";
   static const String roleTitle = "Software Engineer (Flutter & Mobile Architecture)";
   static const String email = "remonhowlader97@gmail.com";
+  static const String secondaryEmail = "chremon84@gmail.com";
   static const String phone = "+8801722877869";
   static const String location = "Dhaka, Bangladesh";
   static const String githubUrl = "https://github.com/howlader97";
-  static const String linkedinUrl = "https://linkedin.com/in/chremon1";
+  static const String linkedinUrl = "https://www.linkedin.com/in/chremon1";
+  static const String facebookUrl = "https://www.facebook.com/ch.remon.1";
   static const String whatsappUrl = "https://wa.me/8801722877869";
   static const String resumeUrl = "https://drive.google.com/file/d/view?usp=sharing";
 
