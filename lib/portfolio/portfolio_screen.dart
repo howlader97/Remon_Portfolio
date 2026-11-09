@@ -89,6 +89,56 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     }
   }
 
+  Widget _buildBannerImage(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth >= 1024;
+
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 60 : 20,
+        vertical: isDesktop ? 24 : 16,
+      ),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1200),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(isDesktop ? 22 : 14),
+              border: Border.all(
+                color: PortfolioColors.primaryLight.withValues(alpha: 0.35),
+                width: 1.5,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: PortfolioColors.primary.withValues(alpha: 0.22),
+                  blurRadius: 32,
+                  offset: const Offset(0, 8),
+                ),
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.40),
+                  blurRadius: 20,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(isDesktop ? 20.5 : 12.5),
+              child: Image.asset(
+                "assets/images/bannar_image.jpg",
+                width: double.infinity,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+                errorBuilder: (context, error, stackTrace) =>
+                    const SizedBox.shrink(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,6 +228,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   key: _heroKey,
                   child: HeroSection(onNavTap: _scrollToSection),
                 ),
+                _buildBannerImage(context),
                 Container(
                   key: _aboutKey,
                   child: const AboutSection(),
