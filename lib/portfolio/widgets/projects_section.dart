@@ -137,35 +137,42 @@ class ProjectsSection extends StatelessWidget {
     required double screenWidth,
   }) {
     if (isDesktop) {
-      // 3 cards side-by-side horizontally
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: projects.map((project) {
-          return Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: _ProjectCard(
-                project: project,
-                onCardTap: () => _showProjectDetails(context, project),
-              ),
-            ),
+      return LayoutBuilder(
+        builder: (context, constraints) {
+          final cardWidth = (constraints.maxWidth - 40) / 3;
+          return Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            children: projects.map((project) {
+              return SizedBox(
+                width: cardWidth,
+                child: _ProjectCard(
+                  project: project,
+                  onCardTap: () => _showProjectDetails(context, project),
+                ),
+              );
+            }).toList(),
           );
-        }).toList(),
+        },
       );
     } else if (isTablet) {
-      return Wrap(
-        spacing: 20,
-        runSpacing: 20,
-        children: projects.map((project) {
-          final cardWidth = (screenWidth - 80) / 2;
-          return SizedBox(
-            width: cardWidth,
-            child: _ProjectCard(
-              project: project,
-              onCardTap: () => _showProjectDetails(context, project),
-            ),
+      return LayoutBuilder(
+        builder: (context, constraints) {
+          final cardWidth = (constraints.maxWidth - 20) / 2;
+          return Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            children: projects.map((project) {
+              return SizedBox(
+                width: cardWidth,
+                child: _ProjectCard(
+                  project: project,
+                  onCardTap: () => _showProjectDetails(context, project),
+                ),
+              );
+            }).toList(),
           );
-        }).toList(),
+        },
       );
     } else {
       return Column(

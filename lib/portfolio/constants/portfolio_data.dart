@@ -213,30 +213,6 @@ class PortfolioData {
       ],
       techStack: ["Flutter", "Dart", "GetX", "Get CLI", "LiveKit", "Stripe", "REST API", "Git & GitHub"],
     ),
-    ProjectItem(
-      title: "Flutter Modular Architecture & Plugin Kit",
-      subtitle: "Reusable Component Ecosystem",
-      platform: "Architecture & Plugin Toolkit",
-      platformIcon: Icons.extension_outlined,
-      badgeColor: Color(0xFFEC4899),
-      storeUrl: "https://github.com/howlader97",
-      storeButtonText: "GitHub",
-      description:
-          "Enterprise-grade reusable widget libraries, state management foundation templates (Riverpod/Bloc/GetX), "
-          "and modular utility plugins designed to cut feature delivery time by 30% with zero memory leaks.",
-      keyFeatures: [
-        "Modular UI system with responsive glassmorphic cards, custom formatters, and reactive listeners.",
-        "Reusable Clean Architecture foundation templates with unified repository patterns.",
-        "Pre-configured fault-tolerant real-time WebSocket and streaming connectors.",
-        "Automated CI/CD pipelines and testing harnesses configured with GitHub Actions.",
-      ],
-      responsibilities: [
-        "Engineered and maintained reusable Flutter architectural libraries.",
-        "Standardized Clean Architecture and MVVM patterns across development teams.",
-        "Maintained open-source modules and shared utilities on GitHub.",
-      ],
-      techStack: ["Flutter", "Dart", "Clean Architecture", "Riverpod", "Bloc", "GetX", "CI/CD"],
-    ),
   ];
 
   // Combined all projects list for easy future additions
