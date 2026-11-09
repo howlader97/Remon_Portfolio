@@ -108,42 +108,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       ),
       body: Stack(
         children: [
-          // Background ambient gradient blobs
-          Positioned(
-            top: -120,
-            left: -100,
-            child: Container(
-              width: 500,
-              height: 500,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    PortfolioColors.primaryLight.withValues(alpha: 0.18),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 600,
-            right: -150,
-            child: Container(
-              width: 550,
-              height: 550,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    PortfolioColors.secondary.withValues(alpha: 0.10),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-
           // Main Scrollable Content
           SingleChildScrollView(
             controller: _scrollController,
