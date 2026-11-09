@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remon Chandra Howlader - Senior Mobile Application Engineer (Flutter & Mobile Architecture). Expert in Clean Architecture, Riverpod, Bloc, high-performance cross-platform iOS & Android engineering, and real-time streaming.">
+  <meta name="keywords" content="Remon Chandra Howlader, Flutter Developer, Senior Flutter Engineer, Mobile Architecture, Clean Architecture, Riverpod, Bloc, iOS, Android, Dart">
+  <meta name="author" content="Remon Chandra Howlader">
+  <meta name="theme-color" content="#080C15">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Remon Chandra Howlader | Senior Flutter & Mobile Architect">
+  <meta property="og:description" content="Senior Mobile Application Engineer specialized in Clean Architecture, 60 FPS performance, and cross-platform apps on App Store & Google Play.">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Remon Chandra Howlader | Senior Flutter & Mobile Architect">
+  <meta property="twitter:description" content="Senior Mobile Application Engineer specialized in Clean Architecture, 60 FPS performance, and cross-platform apps.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Remon Portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Remon Chandra Howlader | Senior Flutter & Mobile Architect</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #080C15;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    #loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #080C15;
+      z-index: 9999;
+      transition: opacity 0.4s ease-out;
+    }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(0, 210, 255, 0.15);
+      border-top-color: #00D2FF;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    .loading-text {
+      margin-top: 18px;
+      color: #94A3B8;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-container">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading Remon's Portfolio...</div>
+  </div>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var loader = document.getElementById('loading-container');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(function () {
+          loader.remove();
+        }, 400);
+      }
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
