@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 class ProjectItem {
   final String title;
   final String subtitle;
-  final String platform; // "iOS", "Android", "Cross-Platform"
+  final String platform;
   final IconData platformIcon;
   final String? storeUrl;
+  final String? storeButtonText;
   final String? githubUrl;
+  final String description;
   final List<String> techStack;
-  final List<String> highlights;
+  final List<String> keyFeatures;
+  final List<String> responsibilities;
   final bool isFeatured;
   final Color badgeColor;
 
@@ -18,9 +21,12 @@ class ProjectItem {
     required this.platform,
     required this.platformIcon,
     this.storeUrl,
+    this.storeButtonText,
     this.githubUrl,
+    required this.description,
     required this.techStack,
-    required this.highlights,
+    required this.keyFeatures,
+    this.responsibilities = const [],
     this.isFeatured = true,
     this.badgeColor = const Color(0xFF00D2FF),
   });
@@ -87,4 +93,3 @@ class TrainingItem {
     required this.period,
   });
 }
-
