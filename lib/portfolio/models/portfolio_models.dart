@@ -87,3 +87,4 @@ class TrainingItem {
     required this.period,
   });
 }
+
