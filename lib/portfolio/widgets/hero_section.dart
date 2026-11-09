@@ -218,10 +218,10 @@ class HeroSection extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             SocialIconButton(
-              icon: Icons.chat_bubble_outline_rounded,
+              icon: FontAwesomeIcons.whatsapp,
               tooltip: "Chat on WhatsApp",
               onTap: () => UrlHelper.launchWebUrl(PortfolioData.whatsappUrl),
-              accentColor: PortfolioColors.accentGreen,
+              accentColor: const Color(0xFF25D366),
             ),
           ],
         ),

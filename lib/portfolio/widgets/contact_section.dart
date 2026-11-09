@@ -171,10 +171,10 @@ class _ContactSectionState extends State<ContactSection> {
           ),
           const SizedBox(height: 18),
           _contactItem(
-            icon: Icons.chat_bubble_outline_rounded,
+            icon: FontAwesomeIcons.whatsapp,
             label: "Phone / WhatsApp",
             value: PortfolioData.phone,
-            color: PortfolioColors.accentGreen,
+            color: const Color(0xFF25D366),
             onTap: () => UrlHelper.launchWebUrl(PortfolioData.whatsappUrl),
             onCopy: () => _copyToClipboard(PortfolioData.phone, "Phone"),
           ),
@@ -220,10 +220,10 @@ class _ContactSectionState extends State<ContactSection> {
               ),
               const SizedBox(width: 12),
               SocialIconButton(
-                icon: Icons.chat_bubble_outline_rounded,
+                icon: FontAwesomeIcons.whatsapp,
                 tooltip: "WhatsApp",
                 onTap: () => UrlHelper.launchWebUrl(PortfolioData.whatsappUrl),
-                accentColor: PortfolioColors.accentGreen,
+                accentColor: const Color(0xFF25D366),
               ),
             ],
           ),
@@ -233,7 +233,7 @@ class _ContactSectionState extends State<ContactSection> {
   }
 
   Widget _contactItem({
-    required IconData icon,
+    required dynamic icon,
     required String label,
     required String value,
     required Color color,
@@ -250,7 +250,9 @@ class _ContactSectionState extends State<ContactSection> {
             borderRadius: BorderRadius.circular(10),
           ),
           alignment: Alignment.center,
-          child: Icon(icon, color: color, size: 20),
+          child: icon is IconData
+              ? Icon(icon, color: color, size: 20)
+              : FaIcon(icon, color: color, size: 20),
         ),
         const SizedBox(width: 14),
         Expanded(
