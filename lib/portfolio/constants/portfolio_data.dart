@@ -61,8 +61,8 @@ class PortfolioData {
     ),
   ];
 
-  // Featured Projects (3 Horizontal Cards)
-  static const List<ProjectItem> projects = [
+  // Top Published Applications (Live on Stores)
+  static const List<ProjectItem> publishedProjects = [
     ProjectItem(
       title: "Sonographer Pal",
       subtitle: "Medical Learning Application",
@@ -94,9 +94,66 @@ class PortfolioData {
       techStack: ["Flutter", "Dart", "GetX", "REST API", "HTTP", "Firebase", "Git & GitHub"],
     ),
     ProjectItem(
+      title: "Inara Yoga",
+      subtitle: "Studio Booking App",
+      platform: "iOS App Store",
+      platformIcon: Icons.apple,
+      badgeColor: Color(0xFF38BDF8),
+      storeUrl: "https://apps.apple.com/app/inara-yoga/id6759218108",
+      storeButtonText: "App Store",
+      description:
+          "A premium iOS studio booking application engineered for high-performance class scheduling, "
+          "real-time spot reservations, and recurring memberships.",
+      keyFeatures: [
+        "Engineered real-time class booking engine with live spot counters and dynamic timetable filtering.",
+        "Instant push notification confirmations and class reminders via Firebase Cloud Messaging (FCM).",
+        "Integrated Apple In-App Purchases (StoreKit) for recurring subscriptions and digital session passes.",
+        "Automated session balance calculations and wallet pass synchronization.",
+        "Profiled rendering pipelines using Xcode Instruments to eradicate frame drops, delivering smooth 60 FPS transitions across all iOS devices.",
+      ],
+      responsibilities: [
+        "Architected end-to-end iOS application architecture using Clean Architecture principles.",
+        "Implemented Apple StoreKit In-App Purchases and recurring subscription lifecycle management.",
+        "Optimized rendering performance to maintain constant 60 FPS with zero memory leaks.",
+        "Published and deployed the application to Apple App Store Connect.",
+      ],
+      techStack: ["Flutter", "Dart", "REST APIs", "StoreKit (IAP)", "Firebase FCM", "Xcode Instruments"],
+    ),
+    ProjectItem(
+      title: "Al Khalifa Food Delivery",
+      subtitle: "On-Demand Food Logistics",
+      platform: "Google Play Store",
+      platformIcon: Icons.android_rounded,
+      badgeColor: Color(0xFFF59E0B),
+      storeUrl: "https://play.google.com/store/apps/details?id=com.alkhalifa.alkhalifa",
+      storeButtonText: "Google Play",
+      description:
+          "A full-lifecycle food logistics mobile application featuring live menu catalog browsing, "
+          "automated ordering workflows, SSLCommerz online payments, and real-time GPS fee calculations.",
+      keyFeatures: [
+        "Live restaurant catalog browsing with category filtering and instant search.",
+        "Integrated SSLCommerz payment gateway for multi-channel secure payments in Bangladesh.",
+        "Dynamic GPS-based delivery fee calculations and live driver location tracking.",
+        "Aggressive image precaching and optimized widget rendering tree.",
+        "Offline-ready local caching using GetStorage for instant repeat order placements.",
+      ],
+      responsibilities: [
+        "Architected frontend mobile architecture integrated with FastAPI backend.",
+        "Integrated SSLCommerz payment gateway with callback handling and invoice verification.",
+        "Engineered real-time GPS geolocation and delivery fee estimation algorithms.",
+        "Optimized image precaching reducing memory footprint by 35% on low-end Android devices.",
+        "Published and maintained the production application on Google Play Console.",
+      ],
+      techStack: ["Flutter", "FastAPI", "SSLCommerz", "GetStorage", "Geolocation", "Google Maps"],
+    ),
+  ];
+
+  // Enterprise Systems, In-Development & Plugin Projects
+  static const List<ProjectItem> otherProjects = [
+    ProjectItem(
       title: "Nexprime",
       subtitle: "Multi-Vendor E-Commerce App",
-      platform: "E-Commerce & Live Streaming",
+      platform: "E-Commerce & LiveKit",
       platformIcon: Icons.shopping_bag_outlined,
       badgeColor: Color(0xFF00D2FF),
       storeUrl: null,
@@ -123,7 +180,7 @@ class PortfolioData {
         "Implemented secure Stripe payment gateway for seamless online checkout transactions.",
         "Engineered responsive and intuitive UI optimized across all device form factors.",
       ],
-      techStack: ["Flutter", "LiveKit", "Stripe", "REST API", "Riverpod", "Git & GitHub"],
+      techStack: ["Flutter", "Riverpod", "LiveKit", "Stripe", "REST API", "Git & GitHub"],
     ),
     ProjectItem(
       title: "InstaLive",
@@ -156,7 +213,34 @@ class PortfolioData {
       ],
       techStack: ["Flutter", "Dart", "GetX", "Get CLI", "LiveKit", "Stripe", "REST API", "Git & GitHub"],
     ),
+    ProjectItem(
+      title: "Flutter Modular Architecture & Plugin Kit",
+      subtitle: "Reusable Component Ecosystem",
+      platform: "Architecture & Plugin Toolkit",
+      platformIcon: Icons.extension_outlined,
+      badgeColor: Color(0xFFEC4899),
+      storeUrl: "https://github.com/howlader97",
+      storeButtonText: "GitHub",
+      description:
+          "Enterprise-grade reusable widget libraries, state management foundation templates (Riverpod/Bloc/GetX), "
+          "and modular utility plugins designed to cut feature delivery time by 30% with zero memory leaks.",
+      keyFeatures: [
+        "Modular UI system with responsive glassmorphic cards, custom formatters, and reactive listeners.",
+        "Reusable Clean Architecture foundation templates with unified repository patterns.",
+        "Pre-configured fault-tolerant real-time WebSocket and streaming connectors.",
+        "Automated CI/CD pipelines and testing harnesses configured with GitHub Actions.",
+      ],
+      responsibilities: [
+        "Engineered and maintained reusable Flutter architectural libraries.",
+        "Standardized Clean Architecture and MVVM patterns across development teams.",
+        "Maintained open-source modules and shared utilities on GitHub.",
+      ],
+      techStack: ["Flutter", "Dart", "Clean Architecture", "Riverpod", "Bloc", "GetX", "CI/CD"],
+    ),
   ];
+
+  // Combined all projects list for easy future additions
+  static List<ProjectItem> get allProjects => [...publishedProjects, ...otherProjects];
 
   // Technical Skills
   static const List<SkillCategory> skillCategories = [

@@ -33,62 +33,153 @@ class ProjectsSection extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1250),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SectionHeader(
-                tag: "// 04. Featured Projects",
-                title: "Published Applications & Systems",
-                subtitle:
-                    "Production-ready mobile applications architected from ground up. Tap on any card for full architecture overview, key features, and engineering responsibilities.",
+              const Center(
+                child: SectionHeader(
+                  tag: "// 04. Featured Projects",
+                  title: "Published Applications & Enterprise Systems",
+                  subtitle:
+                      "Production-grade mobile ecosystems and real-time streaming applications. Tap on any card for full architecture overview, key features, and engineering responsibilities.",
+                ),
               ),
 
-              // Horizontal 3-card layout on desktop
-              if (isDesktop)
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: PortfolioData.projects.map((project) {
-                    return Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: _ProjectCard(
-                          project: project,
-                          onCardTap: () => _showProjectDetails(context, project),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                )
-              else if (isTablet)
-                Wrap(
-                  spacing: 20,
-                  runSpacing: 20,
-                  children: PortfolioData.projects.map((project) {
-                    final cardWidth = (screenWidth - 80) / 2;
-                    return SizedBox(
-                      width: cardWidth,
-                      child: _ProjectCard(
-                        project: project,
-                        onCardTap: () => _showProjectDetails(context, project),
-                      ),
-                    );
-                  }).toList(),
-                )
-              else
-                Column(
-                  children: PortfolioData.projects.map((project) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 24),
-                      child: _ProjectCard(
-                        project: project,
-                        onCardTap: () => _showProjectDetails(context, project),
-                      ),
-                    );
-                  }).toList(),
-                ),
+              // ==========================================
+              // GROUP 1: PUBLISHED PRODUCTION APPLICATIONS
+              // ==========================================
+              _buildCategoryHeader(
+                icon: Icons.verified_rounded,
+                title: "Published Applications",
+                badge: "Live on Stores",
+                badgeColor: const Color(0xFF10B981),
+              ),
+              const SizedBox(height: 18),
+              _buildProjectRowOrGrid(
+                context: context,
+                projects: PortfolioData.publishedProjects,
+                isDesktop: isDesktop,
+                isTablet: isTablet,
+                screenWidth: screenWidth,
+              ),
+
+              const SizedBox(height: 56),
+
+              // ==========================================
+              // GROUP 2: ENTERPRISE, STREAMING & PLUGINS
+              // ==========================================
+              _buildCategoryHeader(
+                icon: Icons.rocket_launch_rounded,
+                title: "Enterprise Systems & In-Development Projects",
+                badge: "Showcase & Architecture",
+                badgeColor: const Color(0xFF00D2FF),
+              ),
+              const SizedBox(height: 18),
+              _buildProjectRowOrGrid(
+                context: context,
+                projects: PortfolioData.otherProjects,
+                isDesktop: isDesktop,
+                isTablet: isTablet,
+                screenWidth: screenWidth,
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildCategoryHeader({
+    required IconData icon,
+    required String title,
+    required String badge,
+    required Color badgeColor,
+  }) {
+    return Row(
+      children: [
+        Icon(icon, size: 20, color: badgeColor),
+        const SizedBox(width: 10),
+        Text(
+          title,
+          style: GoogleFonts.poppins(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: PortfolioColors.textPrimary,
+          ),
+        ),
+        const SizedBox(width: 12),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: badgeColor.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: badgeColor.withValues(alpha: 0.35),
+            ),
+          ),
+          child: Text(
+            badge,
+            style: GoogleFonts.poppins(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: badgeColor,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProjectRowOrGrid({
+    required BuildContext context,
+    required List<ProjectItem> projects,
+    required bool isDesktop,
+    required bool isTablet,
+    required double screenWidth,
+  }) {
+    if (isDesktop) {
+      // 3 cards side-by-side horizontally
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: projects.map((project) {
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: _ProjectCard(
+                project: project,
+                onCardTap: () => _showProjectDetails(context, project),
+              ),
+            ),
+          );
+        }).toList(),
+      );
+    } else if (isTablet) {
+      return Wrap(
+        spacing: 20,
+        runSpacing: 20,
+        children: projects.map((project) {
+          final cardWidth = (screenWidth - 80) / 2;
+          return SizedBox(
+            width: cardWidth,
+            child: _ProjectCard(
+              project: project,
+              onCardTap: () => _showProjectDetails(context, project),
+            ),
+          );
+        }).toList(),
+      );
+    } else {
+      return Column(
+        children: projects.map((project) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: _ProjectCard(
+              project: project,
+              onCardTap: () => _showProjectDetails(context, project),
+            ),
+          );
+        }).toList(),
+      );
+    }
   }
 }
 
@@ -104,7 +195,7 @@ class _ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HoverCard(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(22),
       borderRadius: 20,
       borderColor: project.badgeColor.withValues(alpha: 0.35),
       glowColor: project.badgeColor,
@@ -118,7 +209,7 @@ class _ProjectCard extends StatelessWidget {
             children: [
               // Platform tag
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
                 decoration: BoxDecoration(
                   color: project.badgeColor.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(20),
@@ -130,7 +221,7 @@ class _ProjectCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(project.platformIcon,
-                        size: 14, color: project.badgeColor),
+                        size: 13, color: project.badgeColor),
                     const SizedBox(width: 6),
                     Text(
                       project.platform,
@@ -150,7 +241,7 @@ class _ProjectCard extends StatelessWidget {
                   onTap: () => UrlHelper.launchWebUrl(project.storeUrl!),
                   child: Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
                     decoration: BoxDecoration(
                       color: project.badgeColor.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(10),
@@ -163,8 +254,8 @@ class _ProjectCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(project.platformIcon,
-                            size: 13, color: project.badgeColor),
-                        const SizedBox(width: 6),
+                            size: 12, color: project.badgeColor),
+                        const SizedBox(width: 5),
                         Text(
                           project.storeButtonText ?? "Store",
                           style: GoogleFonts.poppins(
@@ -179,7 +270,7 @@ class _ProjectCard extends StatelessWidget {
                 ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
 
           // Title & Subtitle
           Text(
@@ -187,7 +278,7 @@ class _ProjectCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.poppins(
-              fontSize: 20,
+              fontSize: 19,
               fontWeight: FontWeight.w700,
               color: PortfolioColors.textPrimary,
             ),
@@ -198,12 +289,12 @@ class _ProjectCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.poppins(
-              fontSize: 13,
+              fontSize: 12.5,
               fontWeight: FontWeight.w500,
               color: project.badgeColor,
             ),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 12),
 
           // Short Description
           Text(
@@ -211,14 +302,14 @@ class _ProjectCard extends StatelessWidget {
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.poppins(
-              fontSize: 13,
+              fontSize: 12.5,
               color: PortfolioColors.textSecondary,
               height: 1.55,
             ),
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
           const Divider(color: PortfolioColors.border),
-          const SizedBox(height: 14),
+          const SizedBox(height: 12),
 
           // Tech Stack chips (first 4)
           Wrap(
@@ -235,7 +326,7 @@ class _ProjectCard extends StatelessWidget {
               if (project.techStack.length > 4)
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
                   decoration: BoxDecoration(
                     color: PortfolioColors.surfaceElevated,
                     borderRadius: BorderRadius.circular(6),
@@ -243,7 +334,7 @@ class _ProjectCard extends StatelessWidget {
                   child: Text(
                     "+${project.techStack.length - 4}",
                     style: GoogleFonts.poppins(
-                      fontSize: 11,
+                      fontSize: 10.5,
                       fontWeight: FontWeight.w600,
                       color: PortfolioColors.textMuted,
                     ),
@@ -251,7 +342,7 @@ class _ProjectCard extends StatelessWidget {
                 ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
 
           // View Details Action Link
           Row(
@@ -259,15 +350,15 @@ class _ProjectCard extends StatelessWidget {
               Text(
                 "Tap for full details",
                 style: GoogleFonts.poppins(
-                  fontSize: 12,
+                  fontSize: 11.5,
                   fontWeight: FontWeight.w600,
                   color: project.badgeColor,
                 ),
               ),
-              const SizedBox(width: 6),
+              const SizedBox(width: 5),
               Icon(
                 Icons.arrow_forward_rounded,
-                size: 14,
+                size: 13,
                 color: project.badgeColor,
               ),
             ],
@@ -457,7 +548,7 @@ class ProjectDetailsDialog extends StatelessWidget {
                           );
                         }),
 
-                        // My Responsibilities (if present)
+                        // My Responsibilities
                         if (project.responsibilities.isNotEmpty) ...[
                           const SizedBox(height: 20),
                           const Divider(color: PortfolioColors.border),
