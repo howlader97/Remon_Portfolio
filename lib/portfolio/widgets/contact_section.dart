@@ -29,40 +29,6 @@ class _ContactSectionState extends State<ContactSection> {
     super.dispose();
   }
 
-  void _sendViaWhatsApp() {
-    if (_formKey.currentState?.validate() ?? false) {
-      final name = _nameController.text.trim();
-      final subject = _subjectController.text.trim().isNotEmpty
-          ? _subjectController.text.trim()
-          : "Portfolio Inquiry";
-      final message = _messageController.text.trim();
-      final email = _emailController.text.trim();
-
-      final fullMessage =
-          "Hi Remon,\n\n"
-          "I reached out via your portfolio:\n"
-          "Name: $name\n"
-          "Email: $email\n"
-          "Subject: $subject\n\n"
-          "Message:\n$message";
-
-      final encoded = Uri.encodeComponent(fullMessage);
-      final url = "https://wa.me/8801722877869?text=$encoded";
-      UrlHelper.launchWebUrl(url);
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: PortfolioColors.surfaceElevated,
-          content: Text(
-            "Launching WhatsApp with your message...",
-            style: GoogleFonts.poppins(color: const Color(0xFF25D366)),
-          ),
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
-    }
-  }
-
   void _sendViaGmail() {
     if (_formKey.currentState?.validate() ?? false) {
       final name = _nameController.text.trim();
@@ -430,19 +396,11 @@ class _ContactSectionState extends State<ContactSection> {
               runSpacing: 12,
               children: [
                 GlowButton(
-                  text: "Send via WhatsApp",
-                  icon: FontAwesomeIcons.whatsapp,
-                  accentColor: const Color(0xFF25D366),
-                  onPressed: _sendViaWhatsApp,
-                  horizontalPadding: 24,
-                  verticalPadding: 15,
-                ),
-                GlowButton(
                   text: "Send via Gmail",
                   icon: Icons.mail_rounded,
                   accentColor: const Color(0xFFEA4335),
                   onPressed: _sendViaGmail,
-                  horizontalPadding: 24,
+                  horizontalPadding: 26,
                   verticalPadding: 15,
                 ),
                 GlowButton(
