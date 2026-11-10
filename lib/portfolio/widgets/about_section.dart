@@ -16,21 +16,13 @@ class AboutSection extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(
         horizontal: isDesktop ? 60 : 20,
-        vertical: 70,
+        vertical: 24,
       ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1200),
-          child: Column(
-            children: [
-              const SectionHeader(
-                tag: "// Production Architecture",
-                title: "Engineering Scalable, High-Performance Systems",
-                subtitle:
-                    "Leveraging Flutter's native compilation and clean architectural patterns to engineer resilient, 60 FPS cross-platform applications across iOS and Android.",
-              ),
-              if (isDesktop)
-                Row(
+          child: isDesktop
+              ? Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(flex: 5, child: _buildBioCard(context)),
@@ -38,16 +30,13 @@ class AboutSection extends StatelessWidget {
                     Expanded(flex: 7, child: _buildPillarsGrid(context, 2)),
                   ],
                 )
-              else
-                Column(
+              : Column(
                   children: [
                     _buildBioCard(context),
                     const SizedBox(height: 32),
                     _buildPillarsGrid(context, 1),
                   ],
                 ),
-            ],
-          ),
         ),
       ),
     );

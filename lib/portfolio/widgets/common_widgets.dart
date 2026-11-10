@@ -51,59 +51,66 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth >= 1024;
+
     return Column(
       crossAxisAlignment:
           isCenter ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         // Tag Badge
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
           decoration: BoxDecoration(
-            color: PortfolioColors.primary.withValues(alpha: 0.10),
+            color: PortfolioColors.primary.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: PortfolioColors.primary.withValues(alpha: 0.35),
+              color: PortfolioColors.primary.withValues(alpha: 0.38),
             ),
           ),
           child: Text(
             tag.toUpperCase(),
             style: GoogleFonts.firaCode(
-              fontSize: 12,
+              fontSize: isDesktop ? 13 : 11.5,
               fontWeight: FontWeight.w700,
               color: PortfolioColors.primary,
-              letterSpacing: 1.5,
+              letterSpacing: 2.0,
             ),
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 14),
         // Title
-        Text(
-          title,
-          textAlign: isCenter ? TextAlign.center : TextAlign.start,
-          style: GoogleFonts.poppins(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            color: PortfolioColors.pageTextPrimary,
-            letterSpacing: -0.5,
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 960),
+          child: Text(
+            title,
+            textAlign: isCenter ? TextAlign.center : TextAlign.start,
+            style: GoogleFonts.poppins(
+              fontSize: isDesktop ? 44 : 32,
+              fontWeight: FontWeight.w900,
+              color: PortfolioColors.pageTextPrimary,
+              letterSpacing: -1.0,
+              height: 1.2,
+            ),
           ),
         ),
         if (subtitle != null) ...[
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 680),
+            constraints: const BoxConstraints(maxWidth: 740),
             child: Text(
               subtitle!,
               textAlign: isCenter ? TextAlign.center : TextAlign.start,
               style: GoogleFonts.poppins(
-                fontSize: 15,
+                fontSize: isDesktop ? 16 : 14.5,
                 fontWeight: FontWeight.w500,
                 color: PortfolioColors.pageTextSecondary,
-                height: 1.6,
+                height: 1.65,
               ),
             ),
           ),
         ],
-        const SizedBox(height: 36),
+        const SizedBox(height: 38),
       ],
     );
   }

@@ -33,6 +33,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   final GlobalKey _contactKey = GlobalKey();
 
   bool _isScrolled = false;
+  String _activeSection = "home";
 
   @override
   void initState() {
@@ -46,6 +47,37 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     } else if (_scrollController.offset <= 50 && _isScrolled) {
       setState(() => _isScrolled = false);
     }
+    _determineActiveSection();
+  }
+
+  void _determineActiveSection() {
+    final sections = [
+      {"name": "home", "key": _homeKey},
+      {"name": "about", "key": _aboutKey},
+      {"name": "skills", "key": _skillsKey},
+      {"name": "experience", "key": _experienceKey},
+      {"name": "projects", "key": _projectsKey},
+      {"name": "education", "key": _educationKey},
+      {"name": "contact", "key": _contactKey},
+    ];
+
+    String detected = "home";
+    for (final sec in sections) {
+      final key = sec["key"] as GlobalKey;
+      final ctx = key.currentContext;
+      if (ctx != null) {
+        final box = ctx.findRenderObject() as RenderBox?;
+        if (box != null && box.hasSize) {
+          final top = box.localToGlobal(Offset.zero).dy;
+          if (top <= 250) {
+            detected = sec["name"] as String;
+          }
+        }
+      }
+    }
+    if (_activeSection != detected) {
+      setState(() => _activeSection = detected);
+    }
   }
 
   @override
@@ -56,8 +88,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   }
 
   void _scrollToSection(String section) {
+    final sec = section.toLowerCase();
+    setState(() => _activeSection = (sec == "hero" ? "about" : sec));
+
     GlobalKey? targetKey;
-    switch (section) {
+    switch (sec) {
       case "home":
         targetKey = _homeKey;
         break;
@@ -203,22 +238,23 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
               Text(
                 "Why Flutter & Modern Mobile Application Architecture",
                 style: GoogleFonts.poppins(
-                  fontSize: isDesktop ? 24 : 19,
-                  fontWeight: FontWeight.w800,
+                  fontSize: isDesktop ? 36 : 24,
+                  fontWeight: FontWeight.w900,
                   color: PortfolioColors.pageTextPrimary,
-                  letterSpacing: -0.5,
+                  letterSpacing: -0.8,
+                  height: 1.25,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
 
               Text(
                 "Flutter eliminates traditional cross-platform compromises by compiling directly to native ARM machine code with Google's high-performance Impeller rendering engine. "
                 "With a single unified codebase, businesses achieve 50% faster time-to-market across iOS and Android, pixel-perfect UI consistency, and rock-solid 60/120 FPS fluid performance.",
                 style: GoogleFonts.poppins(
-                  fontSize: isDesktop ? 14.5 : 13.5,
+                  fontSize: isDesktop ? 16 : 14,
                   fontWeight: FontWeight.w500,
                   color: PortfolioColors.pageTextSecondary,
-                  height: 1.65,
+                  height: 1.7,
                 ),
               ),
               const SizedBox(height: 20),
@@ -348,7 +384,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: PortfolioColors.background,
-      endDrawer: MobileDrawer(onNavTap: _scrollToSection),
+      endDrawer: MobileDrawer(
+        onNavTap: _scrollToSection,
+        activeSection: _activeSection,
+      ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: PortfolioColors.primary,
         foregroundColor: Colors.white,
@@ -441,6 +480,22 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   key: _aboutKey,
                   child: Column(
                     children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.width >= 1024 ? 60 : 36,
+                          left: MediaQuery.of(context).size.width >= 1024 ? 60 : 20,
+                          right: MediaQuery.of(context).size.width >= 1024 ? 60 : 20,
+                        ),
+                        child: const Center(
+                          child: SectionHeader(
+                            tag: "// 01. About Me",
+                            title: "Engineering Scalable, Production-Grade Systems",
+                            subtitle:
+                                "A deep dive into my professional track record, architectural philosophy, and cross-platform mobile engineering standards.",
+                            isCenter: true,
+                          ),
+                        ),
+                      ),
                       HeroSection(onNavTap: _scrollToSection),
                       const AboutSection(),
                     ],
@@ -478,6 +533,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             right: 0,
             child: PortfolioNavBar(
               isScrolled: _isScrolled,
+              activeSection: _activeSection,
               onNavTap: _scrollToSection,
               onOpenDrawer: () => _scaffoldKey.currentState?.openEndDrawer(),
             ),

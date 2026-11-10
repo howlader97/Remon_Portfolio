@@ -9,12 +9,14 @@ class PortfolioNavBar extends StatelessWidget implements PreferredSizeWidget {
   final Function(String section) onNavTap;
   final VoidCallback onOpenDrawer;
   final bool isScrolled;
+  final String activeSection;
 
   const PortfolioNavBar({
     super.key,
     required this.onNavTap,
     required this.onOpenDrawer,
     this.isScrolled = false,
+    this.activeSection = "home",
   });
 
   @override
@@ -57,13 +59,41 @@ class PortfolioNavBar extends StatelessWidget implements PreferredSizeWidget {
               if (isDesktop) ...[
                 Row(
                   children: [
-                    _NavLink(title: "Home", onTap: () => onNavTap("home")),
-                    _NavLink(title: "About", onTap: () => onNavTap("about")),
-                    _NavLink(title: "Skills", onTap: () => onNavTap("skills")),
-                    _NavLink(title: "Experience", onTap: () => onNavTap("experience")),
-                    _NavLink(title: "Projects", onTap: () => onNavTap("projects")),
-                    _NavLink(title: "Education", onTap: () => onNavTap("education")),
-                    _NavLink(title: "Contact", onTap: () => onNavTap("contact")),
+                    _NavLink(
+                      title: "Home",
+                      isSelected: activeSection.toLowerCase() == "home",
+                      onTap: () => onNavTap("home"),
+                    ),
+                    _NavLink(
+                      title: "About",
+                      isSelected: activeSection.toLowerCase() == "about",
+                      onTap: () => onNavTap("about"),
+                    ),
+                    _NavLink(
+                      title: "Skills",
+                      isSelected: activeSection.toLowerCase() == "skills",
+                      onTap: () => onNavTap("skills"),
+                    ),
+                    _NavLink(
+                      title: "Experience",
+                      isSelected: activeSection.toLowerCase() == "experience",
+                      onTap: () => onNavTap("experience"),
+                    ),
+                    _NavLink(
+                      title: "Projects",
+                      isSelected: activeSection.toLowerCase() == "projects",
+                      onTap: () => onNavTap("projects"),
+                    ),
+                    _NavLink(
+                      title: "Education",
+                      isSelected: activeSection.toLowerCase() == "education",
+                      onTap: () => onNavTap("education"),
+                    ),
+                    _NavLink(
+                      title: "Contact",
+                      isSelected: activeSection.toLowerCase() == "contact",
+                      onTap: () => onNavTap("contact"),
+                    ),
                   ],
                 ),
                 // Action Buttons
@@ -99,10 +129,12 @@ class PortfolioNavBar extends StatelessWidget implements PreferredSizeWidget {
 
 class _NavLink extends StatefulWidget {
   final String title;
+  final bool isSelected;
   final VoidCallback onTap;
 
   const _NavLink({
     required this.title,
+    this.isSelected = false,
     required this.onTap,
   });
 
@@ -115,25 +147,72 @@ class _NavLinkState extends State<_NavLink> {
 
   @override
   Widget build(BuildContext context) {
+    final active = widget.isSelected;
+    const activeColor = PortfolioColors.primary;
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: GestureDetector(
         onTap: widget.onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
           margin: const EdgeInsets.symmetric(horizontal: 2),
-          child: AnimatedDefaultTextStyle(
-            duration: const Duration(milliseconds: 180),
-            style: GoogleFonts.poppins(
-              fontSize: 14,
-              fontWeight: _isHovered ? FontWeight.w700 : FontWeight.w600,
-              color: _isHovered
-                  ? PortfolioColors.primary
-                  : PortfolioColors.pageTextPrimary,
-            ),
-            child: Text(widget.title),
+          decoration: BoxDecoration(
+            color: active
+                ? activeColor.withValues(alpha: 0.12)
+                : (_isHovered
+                    ? activeColor.withValues(alpha: 0.06)
+                    : Colors.transparent),
+            borderRadius: BorderRadius.circular(10),
+            border: active
+                ? Border.all(
+                    color: activeColor.withValues(alpha: 0.45),
+                    width: 1.2,
+                  )
+                : Border.all(color: Colors.transparent, width: 1.2),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 180),
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: active
+                      ? FontWeight.w700
+                      : (_isHovered ? FontWeight.w600 : FontWeight.w500),
+                  color: active
+                      ? activeColor
+                      : (_isHovered
+                          ? PortfolioColors.primaryLight
+                          : PortfolioColors.pageTextPrimary),
+                ),
+                child: Text(widget.title),
+              ),
+              const SizedBox(height: 3),
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                height: 2.5,
+                width: active ? 22 : (_isHovered ? 12 : 0),
+                decoration: BoxDecoration(
+                  color: activeColor,
+                  borderRadius: BorderRadius.circular(2),
+                  boxShadow: active
+                      ? [
+                          BoxShadow(
+                            color: activeColor.withValues(alpha: 0.65),
+                            blurRadius: 6,
+                            spreadRadius: 1,
+                          ),
+                        ]
+                      : null,
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -143,10 +222,12 @@ class _NavLinkState extends State<_NavLink> {
 
 class MobileDrawer extends StatelessWidget {
   final Function(String section) onNavTap;
+  final String activeSection;
 
   const MobileDrawer({
     super.key,
     required this.onNavTap,
+    this.activeSection = "home",
   });
 
   @override
@@ -235,21 +316,50 @@ class MobileDrawer extends StatelessWidget {
     String section,
     IconData icon,
   ) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: 4),
-      leading: Icon(icon, size: 20, color: PortfolioColors.primary),
-      title: Text(
-        title,
-        style: GoogleFonts.poppins(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          color: PortfolioColors.textPrimary,
-        ),
+    final active = activeSection.toLowerCase() == section.toLowerCase();
+    const activeColor = PortfolioColors.primary;
+
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 3),
+      decoration: BoxDecoration(
+        color: active
+            ? activeColor.withValues(alpha: 0.12)
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(10),
+        border: active
+            ? Border.all(color: activeColor.withValues(alpha: 0.4), width: 1.2)
+            : null,
       ),
-      onTap: () {
-        Navigator.of(context).pop();
-        onNavTap(section);
-      },
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+        leading: Icon(
+          icon,
+          size: 20,
+          color: active ? activeColor : PortfolioColors.primary,
+        ),
+        title: Text(
+          title,
+          style: GoogleFonts.poppins(
+            fontSize: 15,
+            fontWeight: active ? FontWeight.w700 : FontWeight.w500,
+            color: active ? activeColor : PortfolioColors.textPrimary,
+          ),
+        ),
+        trailing: active
+            ? Container(
+                width: 7,
+                height: 7,
+                decoration: const BoxDecoration(
+                  color: activeColor,
+                  shape: BoxShape.circle,
+                ),
+              )
+            : null,
+        onTap: () {
+          Navigator.of(context).pop();
+          onNavTap(section);
+        },
+      ),
     );
   }
 }

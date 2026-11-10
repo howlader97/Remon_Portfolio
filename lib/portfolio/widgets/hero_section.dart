@@ -20,10 +20,12 @@ class HeroSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      constraints: const BoxConstraints(minHeight: 680),
-      padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 60 : 20,
-        vertical: isDesktop ? 60 : 36,
+      constraints: const BoxConstraints(minHeight: 620),
+      padding: EdgeInsets.only(
+        left: isDesktop ? 60 : 20,
+        right: isDesktop ? 60 : 20,
+        top: isDesktop ? 14 : 10,
+        bottom: isDesktop ? 36 : 24,
       ),
       child: Center(
         child: ConstrainedBox(
@@ -54,71 +56,45 @@ class HeroSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Section Tag & Live Availability Pill
-        Wrap(
-          spacing: 12,
-          runSpacing: 10,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-              decoration: BoxDecoration(
-                color: PortfolioColors.primary.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: PortfolioColors.primary.withValues(alpha: 0.35),
-                ),
-              ),
-              child: Text(
-                "// 01. ABOUT ME",
-                style: GoogleFonts.firaCode(
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w700,
-                  color: PortfolioColors.primary,
-                  letterSpacing: 1.2,
-                ),
-              ),
+        // Live Availability Pill
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          decoration: BoxDecoration(
+            color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(
+              color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.25),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-              decoration: BoxDecoration(
-                color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  color: PortfolioColors.pageTextPrimary.withValues(alpha: 0.25),
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 9,
-                    height: 9,
-                    decoration: const BoxDecoration(
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 9,
+                height: 9,
+                decoration: const BoxDecoration(
+                  color: PortfolioColors.accentGreen,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
                       color: PortfolioColors.accentGreen,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: PortfolioColors.accentGreen,
-                          blurRadius: 8,
-                          spreadRadius: 2,
-                        ),
-                      ],
+                      blurRadius: 8,
+                      spreadRadius: 2,
                     ),
-                  ),
-                  const SizedBox(width: 10),
-                  Text(
-                    "Available for New Projects & Opportunities",
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: PortfolioColors.pageTextPrimary,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+              const SizedBox(width: 10),
+              Text(
+                "Available for New Projects & Opportunities",
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: PortfolioColors.pageTextPrimary,
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 24),
 
@@ -126,7 +102,7 @@ class HeroSection extends StatelessWidget {
         Text(
           "Hello, I'm",
           style: GoogleFonts.poppins(
-            fontSize: isDesktop ? 22 : 18,
+            fontSize: isDesktop ? 26 : 20,
             fontWeight: FontWeight.w600,
             color: PortfolioColors.pageTextSecondary,
           ),
@@ -140,10 +116,10 @@ class HeroSection extends StatelessWidget {
           child: Text(
             PortfolioData.name,
             style: GoogleFonts.poppins(
-              fontSize: isDesktop ? 48 : 34,
-              fontWeight: FontWeight.w800,
+              fontSize: isDesktop ? 54 : 38,
+              fontWeight: FontWeight.w900,
               color: Colors.white,
-              letterSpacing: -1.0,
+              letterSpacing: -1.2,
               height: 1.15,
             ),
           ),
@@ -152,7 +128,7 @@ class HeroSection extends StatelessWidget {
 
         // Role title
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
             color: PortfolioColors.primary.withValues(alpha: 0.10),
             borderRadius: BorderRadius.circular(8),
@@ -163,7 +139,7 @@ class HeroSection extends StatelessWidget {
           child: Text(
             PortfolioData.roleTitle,
             style: GoogleFonts.firaCode(
-              fontSize: isDesktop ? 15 : 13,
+              fontSize: isDesktop ? 16 : 13.5,
               fontWeight: FontWeight.w700,
               color: PortfolioColors.primary,
             ),
