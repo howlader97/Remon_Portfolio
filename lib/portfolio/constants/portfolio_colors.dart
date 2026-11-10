@@ -18,7 +18,7 @@ class PortfolioColors {
   // Accents
   static const Color primary = Color(0xFF00D2FF); // Electric cyan
   static const Color primaryLight = Color(0xFF38BDF8);
-  static const Color secondary = Color(0xFF163E66);
+  static const Color secondary = Color(0xFF38BDF8); // Vibrant Sky Blue
   static const Color accent = Color(0xFF00D2FF);
   static const Color accentGreen = Color(0xFF10B981);
   static const Color accentAmber = Color(0xFFF59E0B);

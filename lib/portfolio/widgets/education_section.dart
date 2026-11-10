@@ -182,8 +182,8 @@ class EducationSection extends StatelessWidget {
   Widget _buildTrainingCard(BuildContext context) {
     return HoverCard(
       padding: const EdgeInsets.all(28),
-      borderColor: PortfolioColors.secondary.withValues(alpha: 0.3),
-      glowColor: PortfolioColors.secondary,
+      borderColor: PortfolioColors.primaryLight.withValues(alpha: 0.35),
+      glowColor: PortfolioColors.primaryLight,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -192,13 +192,16 @@ class EducationSection extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: PortfolioColors.secondary.withValues(alpha: 0.12),
+                  color: PortfolioColors.primaryLight.withValues(alpha: 0.14),
                   borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: PortfolioColors.primaryLight.withValues(alpha: 0.35),
+                  ),
                 ),
                 child: const Icon(
-                  Icons.verified_outlined,
-                  color: PortfolioColors.secondary,
-                  size: 22,
+                  Icons.verified_rounded,
+                  color: PortfolioColors.primaryLight,
+                  size: 24,
                 ),
               ),
               const SizedBox(width: 14),
@@ -230,13 +233,13 @@ class EducationSection extends StatelessWidget {
                         color: PortfolioColors.textPrimary,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 5),
                     Text(
                       train.institution,
                       style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: PortfolioColors.secondary,
+                        fontSize: 14.5,
+                        fontWeight: FontWeight.w600,
+                        color: PortfolioColors.primaryLight,
                       ),
                     ),
                     const SizedBox(height: 4),
