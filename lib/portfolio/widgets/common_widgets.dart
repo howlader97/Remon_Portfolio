@@ -60,57 +60,58 @@ class SectionHeader extends StatelessWidget {
       children: [
         // Tag Badge
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
             color: PortfolioColors.primary.withValues(alpha: 0.12),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(22),
             border: Border.all(
-              color: PortfolioColors.primary.withValues(alpha: 0.38),
+              color: PortfolioColors.primary.withValues(alpha: 0.40),
+              width: 1.2,
             ),
           ),
           child: Text(
             tag.toUpperCase(),
             style: GoogleFonts.firaCode(
-              fontSize: isDesktop ? 13 : 11.5,
+              fontSize: isDesktop ? 15.5 : 13.5,
               fontWeight: FontWeight.w700,
               color: PortfolioColors.primary,
-              letterSpacing: 2.0,
+              letterSpacing: 2.2,
             ),
           ),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 16),
         // Title
         ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 960),
+          constraints: const BoxConstraints(maxWidth: 880),
           child: Text(
             title,
             textAlign: isCenter ? TextAlign.center : TextAlign.start,
             style: GoogleFonts.poppins(
-              fontSize: isDesktop ? 44 : 32,
-              fontWeight: FontWeight.w900,
+              fontSize: isDesktop ? 32 : 24,
+              fontWeight: FontWeight.w700,
               color: PortfolioColors.pageTextPrimary,
-              letterSpacing: -1.0,
-              height: 1.2,
+              letterSpacing: -0.5,
+              height: 1.3,
             ),
           ),
         ),
         if (subtitle != null) ...[
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 740),
+            constraints: const BoxConstraints(maxWidth: 720),
             child: Text(
               subtitle!,
               textAlign: isCenter ? TextAlign.center : TextAlign.start,
               style: GoogleFonts.poppins(
-                fontSize: isDesktop ? 16 : 14.5,
+                fontSize: isDesktop ? 15 : 13.5,
                 fontWeight: FontWeight.w500,
                 color: PortfolioColors.pageTextSecondary,
-                height: 1.65,
+                height: 1.6,
               ),
             ),
           ),
         ],
-        const SizedBox(height: 38),
+        const SizedBox(height: 36),
       ],
     );
   }

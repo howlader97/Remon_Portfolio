@@ -102,7 +102,7 @@ class HeroSection extends StatelessWidget {
         Text(
           "Hello, I'm",
           style: GoogleFonts.poppins(
-            fontSize: isDesktop ? 26 : 20,
+            fontSize: isDesktop ? 20 : 16,
             fontWeight: FontWeight.w600,
             color: PortfolioColors.pageTextSecondary,
           ),
@@ -116,10 +116,10 @@ class HeroSection extends StatelessWidget {
           child: Text(
             PortfolioData.name,
             style: GoogleFonts.poppins(
-              fontSize: isDesktop ? 54 : 38,
-              fontWeight: FontWeight.w900,
+              fontSize: isDesktop ? 40 : 30,
+              fontWeight: FontWeight.w800,
               color: Colors.white,
-              letterSpacing: -1.2,
+              letterSpacing: -0.6,
               height: 1.15,
             ),
           ),
@@ -128,7 +128,7 @@ class HeroSection extends StatelessWidget {
 
         // Role title
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
           decoration: BoxDecoration(
             color: PortfolioColors.primary.withValues(alpha: 0.10),
             borderRadius: BorderRadius.circular(8),
@@ -139,7 +139,7 @@ class HeroSection extends StatelessWidget {
           child: Text(
             PortfolioData.roleTitle,
             style: GoogleFonts.firaCode(
-              fontSize: isDesktop ? 16 : 13.5,
+              fontSize: isDesktop ? 14.5 : 12.5,
               fontWeight: FontWeight.w700,
               color: PortfolioColors.primary,
             ),

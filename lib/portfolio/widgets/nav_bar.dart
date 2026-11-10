@@ -181,7 +181,7 @@ class _NavLinkState extends State<_NavLink> {
               AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 180),
                 style: GoogleFonts.poppins(
-                  fontSize: 14,
+                  fontSize: 14.5,
                   fontWeight: active
                       ? FontWeight.w700
                       : (_isHovered ? FontWeight.w600 : FontWeight.w500),
