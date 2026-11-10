@@ -217,6 +217,44 @@ class PortfolioData {
       ],
       techStack: ["Flutter", "Dart", "GetX", "Get CLI", "LiveKit", "Stripe", "REST API", "Git & GitHub"],
     ),
+    ProjectItem(
+      title: "Belwork",
+      subtitle: "Multi-Role On-Demand Artisan & Home Asset Maintenance Platform",
+      platform: "On-Demand Marketplace & Escrow",
+      platformIcon: Icons.home_repair_service_outlined,
+      badgeColor: Color(0xFF10B981),
+      storeUrl: null,
+      storeButtonText: "View Architecture",
+      description:
+          "A comprehensive Flutter-based marketplace connecting homeowners, independent artisans, and corporate field service teams with real-time routing, digital escrow, and regulatory compliance. Built for the European market to unify the home maintenance lifecycle, statutory inspection planning, and regional subsidy tracking into a secure cross-platform mobile ecosystem.",
+      keyFeatures: [
+        "Architected a production-grade multi-tenant Flutter application supporting 3 distinct roles (Customer, Independent Artisan, and Company Employee) with role-based routing using GoRouter.",
+        "Integrated Riverpod for robust, asynchronous state management with custom state observation and decoupled data repositories.",
+        "Engineered a real-time messaging and negotiation engine using Socket.io, enabling instant communication, digital quote approvals (Devis), and status synchronizations.",
+        "Built cost-effective mapping and location-based discovery utilizing OpenStreetMap (Leaflet) and Haversine geospatial calculations for dispatch zone filtering.",
+        "Implemented end-to-end security workflows featuring Hardware-backed Secure Storage, Biometric authentication, and social sign-in (Google & Apple Sign-In).",
+        "Automated home maintenance tracking with Annual Statutory Inspection planners and Belgium-specific regional subsidy monitors (Flanders, Wallonia, Brussels).",
+        "Implemented full internationalization (i18n) with dynamic runtime switching across 13+ languages (optimized for European multilingual markets).",
+      ],
+      responsibilities: [
+        "Architected multi-tenant mobile client ensuring zero permission leaks between customer and contractor navigation trees based on authentication tokens.",
+        "Eliminated expensive Google Maps API billing by integrating OpenStreetMap (flutter_map + latlong2) with custom interactive pin dropping and reverse geocoding, reducing third-party API costs by 100%.",
+        "Engineered milestone & digital escrow release workflow where funds are securely held and released only upon verifiable before-and-after photographic evidence.",
+        "Protected sensitive financial transactions using hardware-isolated storage (flutter_secure_storage) paired with biometric authentication and automated silent JWT token refresh via Dio interceptors.",
+        "Unified European compliance workflows with automated statutory inspection planners and green renovation subsidy directories.",
+      ],
+      techStack: [
+        "Flutter",
+        "Dart",
+        "Riverpod",
+        "GoRouter",
+        "Socket.io",
+        "OpenStreetMap",
+        "Dio",
+        "Biometrics",
+        "i18n",
+      ],
+    ),
   ];
 
   // Combined all projects list for easy future additions
