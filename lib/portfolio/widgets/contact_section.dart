@@ -44,6 +44,13 @@ class _ContactSectionState extends State<ContactSection> {
 
       UrlHelper.launchWebUrl(gmailUrl);
 
+      // Clear all fields and reset form validation state
+      _nameController.clear();
+      _emailController.clear();
+      _subjectController.clear();
+      _messageController.clear();
+      _formKey.currentState?.reset();
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: PortfolioColors.surfaceElevated,
@@ -77,6 +84,13 @@ class _ContactSectionState extends State<ContactSection> {
       );
 
       UrlHelper.launchWebUrl(mailtoUri.toString());
+
+      // Clear all fields and reset form validation state
+      _nameController.clear();
+      _emailController.clear();
+      _subjectController.clear();
+      _messageController.clear();
+      _formKey.currentState?.reset();
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
