@@ -116,7 +116,7 @@ class HeroSection extends StatelessWidget {
           child: Text(
             PortfolioData.name,
             style: GoogleFonts.poppins(
-              fontSize: isDesktop ? 40 : 30,
+              fontSize: isDesktop ? 35 : 25,
               fontWeight: FontWeight.w800,
               color: Colors.white,
               letterSpacing: -0.6,

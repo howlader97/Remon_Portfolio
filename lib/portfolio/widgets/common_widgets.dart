@@ -87,7 +87,7 @@ class SectionHeader extends StatelessWidget {
             title,
             textAlign: isCenter ? TextAlign.center : TextAlign.start,
             style: GoogleFonts.poppins(
-              fontSize: isDesktop ? 32 : 24,
+              fontSize: isDesktop ? 27 : 20,
               fontWeight: FontWeight.w700,
               color: PortfolioColors.pageTextPrimary,
               letterSpacing: -0.5,

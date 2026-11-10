@@ -238,7 +238,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
               Text(
                 "Why Flutter & Modern Mobile Application Architecture",
                 style: GoogleFonts.poppins(
-                  fontSize: isDesktop ? 30 : 22,
+                  fontSize: isDesktop ? 25 : 18,
                   fontWeight: FontWeight.w700,
                   color: PortfolioColors.pageTextPrimary,
                   letterSpacing: -0.6,

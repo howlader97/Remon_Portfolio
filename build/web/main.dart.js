@@ -82387,7 +82387,7 @@ a1I(a){var s=null,r=A.bb(a,s,t.w).w.a.a>=1024,q=r?60:20,p=r?60:20,o=r?18:12,n=r?
 return A.b2(s,A.el(new A.d0(B.cp,A.b2(s,A.Ii(A.bt(r?20.5:12.5),A.atp("assets/images/bannar_images.jpg",B.R,new A.an6(),B.eP,B.ja,1/0)),B.l,s,s,new A.b4(s,s,l,m,k,s,B.z),s,s,s,s,s,s,s,s),s),s,s),B.l,s,s,s,s,s,s,s,new A.a9(q,o,p,n),s,s,1/0)},
 a1L(a){var s=null,r=A.bb(a,s,t.w).w.a.a,q=r>=1024,p=r>=640&&r<1024,o=q?60:20,n=q?20:14,m=B.w.aP(0.12),l=A.bt(20),k=A.dj(B.w.aP(0.35),1),j=t.p
 l=A.b2(s,A.bw(A.b([B.H_,B.cD,A.ap("CROSS-PLATFORM EXCELLENCE",s,s,s,A.GI().$4$color$fontSize$fontWeight$letterSpacing(B.w,11.5,B.L,1.2),s,s)],j),B.v,B.m,B.aG),B.l,s,s,new A.b4(m,s,k,l,s,s,B.z),s,s,s,s,B.nH,s,s,s)
-m=A.ap("Why Flutter & Modern Mobile Application Architecture",s,s,s,A.aD().$5$color$fontSize$fontWeight$height$letterSpacing(B.i,q?30:22,B.L,1.3,-0.6),s,s)
+m=A.ap("Why Flutter & Modern Mobile Application Architecture",s,s,s,A.aD().$5$color$fontSize$fontWeight$height$letterSpacing(B.i,q?25:18,B.L,1.3,-0.6),s,s)
 return A.b2(s,A.el(new A.d0(B.cp,A.bK(A.b([l,B.iu,m,B.bU,A.ap("Flutter eliminates traditional cross-platform compromises by compiling directly to native ARM machine code with Google's high-performance Impeller rendering engine. With a single unified codebase, businesses achieve 50% faster time-to-market across iOS and Android, pixel-perfect UI consistency, and rock-solid 60/120 FPS fluid performance.",s,s,s,A.aD().$4$color$fontSize$fontWeight$height(B.S,q?16:14,B.F,1.7),s,s),B.ba,A.a5X(new A.an7(this,q,p))],j),B.K,B.m,B.o),s),s,s),B.l,s,s,s,s,s,s,s,new A.a9(o,n,o,n),s,s,1/0)},
 vr(a,b,c,d){var s=null,r=A.bt(16),q=A.dj(a.aP(0.25),1.2),p=A.b([new A.ct(0,B.aV,B.n.aP(0.25),B.f6,14)],t.E),o=a.aP(0.15),n=A.bt(10),m=t.p
 return A.b2(s,A.bK(A.b([A.bw(A.b([A.b2(s,A.fd(c,s,s,a,s,s,s,s,s,s,s,20,s,s),B.l,s,s,new A.b4(o,s,s,n,s,s,B.z),s,s,s,s,B.nL,s,s,s),B.is,A.d2(A.ap(d,s,s,s,A.aD().$3$color$fontSize$fontWeight(B.i,13.5,B.L),s,s),1)],m),B.v,B.m,B.o),B.e3,A.ap(b,s,s,s,A.aD().$4$color$fontSize$fontWeight$height(B.S,11.5,B.q,1.5),s,s)],m),B.K,B.dK,B.o),B.l,s,s,new A.b4(B.bJ,s,q,r,p,s,B.z),s,s,s,s,B.Fg,s,s,s)},
@@ -82466,7 +82466,7 @@ A.ln.prototype={
 M(a){var s=null,r=A.bb(a,s,t.w).w.a.a>=1024,q=B.w.aP(0.12),p=A.bt(22),o=A.dj(B.w.aP(0.4),1.2)
 q=A.b2(s,A.ap(this.c.toUpperCase(),s,s,s,A.GI().$4$color$fontSize$fontWeight$letterSpacing(B.w,r?15.5:13.5,B.L,2.2),s,s),B.l,s,s,new A.b4(q,s,o,p,s,s,B.z),s,s,s,s,B.Fo,s,s,s)
 p=t.p
-q=A.b([q,B.ca,new A.d0(B.Bp,A.ap(this.d,s,s,s,A.aD().$5$color$fontSize$fontWeight$height$letterSpacing(B.i,r?32:24,B.L,1.3,-0.5),B.e5,s),s)],p)
+q=A.b([q,B.ca,new A.d0(B.Bp,A.ap(this.d,s,s,s,A.aD().$5$color$fontSize$fontWeight$height$letterSpacing(B.i,r?27:20,B.L,1.3,-0.5),B.e5,s),s)],p)
 B.b.R(q,A.b([B.QY,new A.d0(B.Bn,A.ap(this.e,s,s,s,A.aD().$4$color$fontSize$fontWeight$height(B.S,r?15:13.5,B.F,1.6),B.e5,s),s)],p))
 q.push(B.lD)
 return A.bK(q,B.v,B.m,B.o)}}
@@ -82766,7 +82766,7 @@ return A.b2(r,A.el(new A.d0(B.cp,q?A.bw(A.b([A.d2(s.JV(a,!0),6),B.QW,A.d2(s.K_(a
 JV(a,b){var s,r,q,p=null,o=B.i.aP(0.08),n=A.bt(30),m=A.dj(B.i.aP(0.25),1),l=t.p
 n=A.b2(p,A.bw(A.b([A.b2(p,p,B.l,p,p,B.Bu,p,9,p,p,p,p,p,9),B.is,A.ap("Available for New Projects & Opportunities",p,p,p,A.aD().$3$color$fontSize$fontWeight(B.i,12,B.L),p,p)],l),B.v,B.m,B.aG),B.l,p,p,new A.b4(o,p,m,n,p,p,B.z),p,p,p,p,B.jO,p,p,p)
 o=A.ap("Hello, I'm",p,p,p,A.aD().$3$color$fontSize$fontWeight(B.S,b?20:16,B.an),p,p)
-m=A.ap("Remon Chandra Howlader",p,p,p,A.aD().$5$color$fontSize$fontWeight$height$letterSpacing(B.i,b?40:30,B.dE,1.15,-0.6),p,p)
+m=A.ap("Remon Chandra Howlader",p,p,p,A.aD().$5$color$fontSize$fontWeight$height$letterSpacing(B.i,b?35:25,B.dE,1.15,-0.6),p,p)
 s=B.w.aP(0.1)
 r=A.bt(8)
 q=A.dj(B.w.aP(0.35),1)
