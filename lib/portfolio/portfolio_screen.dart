@@ -405,56 +405,105 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF163554), // Lighter, vibrant royal oceanic blue at top
-              Color(0xFF112A44),
-              Color(0xFF0E2338), // Rich royal navy
-              Color(0xFF0A1B2C),
+              Color(0xFF16385A), // Lighter, vibrant royal oceanic blue at top
+              Color(0xFF122E4A),
+              Color(0xFF0F263E), // Rich royal navy
+              Color(0xFF112942), // Luminous oceanic depth at bottom
             ],
-            stops: [0.0, 0.25, 0.65, 1.0],
+            stops: [0.0, 0.30, 0.70, 1.0],
           ),
         ),
         child: Stack(
           children: [
-            // Simple premium top ambient spotlight / glow
+            // Top ambient spotlight / glow
             Positioned(
-              top: -150,
+              top: -160,
               left: 0,
               right: 0,
               child: Center(
                 child: IgnorePointer(
                   child: Container(
-                    width: 900,
-                    height: 500,
+                    width: 950,
+                    height: 520,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: RadialGradient(
                         colors: [
-                          Color(0x3000D2FF), // Soft luminous light
-                          Color(0x100077B6),
+                          Color(0x3200D2FF), // Soft luminous light
+                          Color(0x120077B6),
                           Colors.transparent,
                         ],
-                        stops: const [0.0, 0.45, 1.0],
+                        stops: const [0.0, 0.48, 1.0],
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-            // Soft mid-page ambient light behind projects
+
+            // Premium right-side ambient spotlight (illuminates right flank & empty space)
             Positioned(
-              top: 1400,
-              right: -150,
+              top: 260,
+              right: -180,
               child: IgnorePointer(
                 child: Container(
-                  width: 550,
-                  height: 550,
+                  width: 720,
+                  height: 720,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        Color(0x1500D2FF),
+                        Color(0x2C00D2FF), // Vibrant cyan luminous light like top
+                        Color(0x160077B6), // Ocean cyan/blue
                         Colors.transparent,
                       ],
+                      stops: const [0.0, 0.48, 1.0],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            // Premium bottom-left ambient spotlight (illuminates left side of Skills & cards)
+            Positioned(
+              bottom: -80,
+              left: -160,
+              child: IgnorePointer(
+                child: Container(
+                  width: 620,
+                  height: 620,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        Color(0x2800D2FF), // Matching soft luminous glow
+                        Color(0x140077B6),
+                        Colors.transparent,
+                      ],
+                      stops: const [0.0, 0.48, 1.0],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            // Premium bottom-right ambient spotlight (balances lower right corner)
+            Positioned(
+              bottom: -100,
+              right: -120,
+              child: IgnorePointer(
+                child: Container(
+                  width: 580,
+                  height: 580,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        Color(0x2200D2FF),
+                        Color(0x100077B6),
+                        Colors.transparent,
+                      ],
+                      stops: const [0.0, 0.50, 1.0],
                     ),
                   ),
                 ),
